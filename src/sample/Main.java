@@ -1,17 +1,20 @@
+package sample;
+
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static final String PROJECT_NAME = "Slime Mould Everything";
     Stage window;
     Scene scene1, scene2;
     Button button;
@@ -19,46 +22,62 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        window = primaryStage;
-        Label label1 = new Label("Welcome to the first scene!");
-
-        // button 1
-        Button button1 = new Button("Go to scene 2");
-        button1.setOnAction(e -> window.setScene(scene2));
-
-        // button 2
-        Button button2 = new Button("This scene sucks. Go back to scene 1");
-        button2.setOnAction(e -> window.setScene(scene1));
-
-        // layout 1 - children are laid out in vertical column
-        VBox layout1 = new VBox(20);
-        layout1.getChildren().addAll(label1, button1);
-        scene1 = new Scene(layout1, 200, 200);
-
-        // layout 2
-        StackPane layout2 = new StackPane();
-        layout2.getChildren().add(button2);
-        scene2 = new Scene(layout2, 600, 300);
-
-        window.setScene(scene1);
-        window.setTitle("Title here");
-        window.show();
-
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        primaryStage.setTitle("Title of the Window");
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Hello world");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
 //
-//        button = new Button();
-//        button.setText("Click me");
-//        button.setOnAction(e -> System.out.println("Yo why you pressin"));       // look in this class for handle method
 //
-//        StackPane layout = new StackPane();
-//        layout.getChildren().add(button);
+//        window = primaryStage;
+//        window.setTitle(PROJECT_NAME);
+//        window.setOnCloseRequest(e -> {
+//            e.consume();
+//            closeProgram();
+//        });
+//        HBox topMenu = new HBox();
+//        Button buttonA = new Button("File");
+//        Button buttonB = new Button("Edit");
+//        Button buttonC = new Button("View");
+//        topMenu.getChildren().addAll(buttonA, buttonB, buttonC);
 //
-//        Scene scene = new Scene(layout, 300, 275);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
+//        VBox leftMenu = new VBox();
+//        Button buttonD = new Button("CHANGE STYLE");
+////        buttonD.setOnAction(e->{
+////            scene2.getStylesheets().add("./sample/Viper.css");
+////        });
+//
+//        Button buttonE = new Button("E");
+//        Button buttonF = new Button("F");
+//        leftMenu.getChildren().addAll(buttonD, buttonE, buttonF);
+//
+//        Button exitButton = new Button("Exit");
+//        exitButton.setOnAction(e -> closeProgram());
+//        // layout 2
+//        StackPane bottomMenu = new StackPane();
+//        bottomMenu.getChildren().add(exitButton);
+//
+//
+//        BorderPane borderPane = new BorderPane();
+//        borderPane.setTop(topMenu);
+//        borderPane.setLeft(leftMenu);
+//        borderPane.setBottom(bottomMenu);
+//
+//        scene2 = new Scene(borderPane, 600, 300);
+//
+//
+//        window.setScene(scene2);
+//        window.setTitle(PROJECT_NAME);
+//        window.show();
     }
 
+    void closeProgram() {
+        boolean answer = ExitMenu.display("Exit Menu", "Sure you want to exit?");
+        if (answer) {
+
+            System.out.println("File is saved!");
+            window.close();
+        }
+    }
 
     public static void main(String[] args) {
         launch(args);
