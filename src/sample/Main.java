@@ -19,14 +19,20 @@ public class Main extends Application {
     Scene scene1, scene2;
     Button button;
 
+    Stage stage;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello world");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+        SlimeMouldManager manager = new SlimeMouldManager();
+        manager.start(primaryStage);
 //
+//        this.stage = primaryStage;
+//
+//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+//        primaryStage.setTitle("Hello world");
+//        primaryStage.setScene(new Scene(root));
+//        primaryStage.show();
+////
 //
 //        window = primaryStage;
 //        window.setTitle(PROJECT_NAME);
