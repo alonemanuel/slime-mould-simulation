@@ -12,7 +12,7 @@ import java.util.Random;
 
 
 /**
- * A class representing a Slime Mould Manager.
+ * A class representing a Slime Mould2 Manager.
  */
 public class SlimeMouldManager {
     // Constants //
@@ -31,11 +31,11 @@ public class SlimeMouldManager {
     /**
      * Number of X aligned tiles.
      */
-    private static final int X_TILES = W / TILE_SIZE;
+    protected static final int X_TILES = W / TILE_SIZE;
     /**
      * Number of Y aligned tiles.
      */
-    private static final int Y_TILES = H / TILE_SIZE;
+    protected static final int Y_TILES = H / TILE_SIZE;
 
     /**
      * Number of food items.
@@ -59,6 +59,7 @@ public class SlimeMouldManager {
      * Pane of Tiles holding all tiles.
      */
     private Pane worldPane;
+    private Tile mouldHeadTile;
 
     // Methods //
 
@@ -78,6 +79,10 @@ public class SlimeMouldManager {
             for (int x = 0; x < X_TILES; x++) {
                 Tile tile = new Tile(x, y);
                 worldGrid[x][y] = tile;
+//                tile.downNeighbor = (y == Y_TILES - 1) ? null : worldGrid[x][y + 1];
+//                tile.upNeighbor = (y == 0) ? null : worldGrid[x][y - 1];
+//                tile.rightNeighbor = (x == X_TILES - 1) ? null : worldGrid[x + 1][y];
+//                tile.leftNeighbor = (x == 0) ? null : worldGrid[x - 1][y];
                 worldPane.getChildren().add(tile);
             }
         }
@@ -99,20 +104,18 @@ public class SlimeMouldManager {
      * Place mould in world.
      */
     public void placeMould() throws Exception {
-
+        Tile currTile;
         int randX, randY;
         Random rand = new Random();
-        Tile tile;
         // Wait until en empty spot is found.
         do {
             randX = rand.nextInt(X_TILES);
             randY = rand.nextInt(Y_TILES);
-            tile = worldGrid[randX][randY];
+            currTile = worldGrid[randX][randY];
 
-        } while (tile.getType() != Tile.EMPTY);
-
-        tile.setType(Tile.MOULD);
-        tile.getText().setText(MOULD_IMG);
+        } while (currTile.getType() != Tile.EMPTY);
+        mouldHeadTile = currTile;
+        mouldHeadTile.becomeMould();
     }
 
 
@@ -126,7 +129,14 @@ public class SlimeMouldManager {
         placeMould();
     }
 
+    // Movement //
+    private void run() throws Exception {
+        ((Mould) mouldHeadTile.getElement()).searchForFood(worldGrid);
+    }
+
+
     // Helpers //
+
 
     /**
      * Adds food to world.
@@ -136,8 +146,9 @@ public class SlimeMouldManager {
      */
     private void addFood(int xPos, int yPos) throws Exception {
         Tile tile = worldGrid[xPos][yPos];
+        tile.setElement(new Food(xPos, yPos));
         tile.setType(Tile.FOOD);
-        tile.getText().setText(FOOD_IMG);
+//        tile.getText().setText(FOOD_IMG);
     }
 
 
@@ -162,5 +173,6 @@ public class SlimeMouldManager {
         Scene scene = new Scene(getRootStruct());
         primaryStage.setScene(scene);
         primaryStage.show();
+        run();
     }
 }

@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import static SlimeMouldApp.SlimeMouldManager.MOULD_IMG;
 import static SlimeMouldApp.SlimeMouldManager.TILE_SIZE;
 
 /**
@@ -23,15 +24,19 @@ public class Tile extends StackPane {
     private static final int TYPES[] = {EMPTY, FOOD, MOULD};
     public static final String ILLEGAL_TYPE_ERR = "Err: Illegal type.";
 
-    /**
-     * 2D location of tile.
-     */
-    private int _x;
-    private int _y;
+
+//    protected Tile leftNeighbor;
+//    protected Tile rightNeighbor;
+//    protected Tile upNeighbor;
+//    protected Tile downNeighbor;
+
     /**
      * Type of the tile.
      */
     private int _type;
+
+    private Element _element;
+
     /**
      * Border of the tile.
      */
@@ -54,36 +59,22 @@ public class Tile extends StackPane {
     /**
      * Ctor for a tile.
      *
-     * @param x_pos x position
-     * @param y_pos y position
+     * @param xPos x position
+     * @param yPos y position
      */
-    public Tile(int x_pos, int y_pos) {
-        _x = x_pos;
-        _y = y_pos;
+    public Tile(int xPos, int yPos) {
         _type = EMPTY;
-        _text = new Text(".");
+        _element = new Empty(xPos, yPos);
+        _text = new Text();
+        _text.textProperty().bind(_element._text.textProperty());
         // Init rectangle
         _border = new Rectangle(TILE_SIZE - 2, TILE_SIZE - 2);
         _border.setStroke(Color.LIGHTGRAY);
         _border.setFill(null);
         getChildren().addAll(_border, _text);
         // Translate location
-        setTranslateX(x_pos * TILE_SIZE);
-        setTranslateY(y_pos * TILE_SIZE);
-    }
-
-    /**
-     * @return x location.
-     */
-    public int getX() {
-        return _x;
-    }
-
-    /**
-     * @return y location.
-     */
-    public int getY() {
-        return _y;
+        setTranslateX(xPos * TILE_SIZE);
+        setTranslateY(yPos * TILE_SIZE);
     }
 
     /**
@@ -100,23 +91,6 @@ public class Tile extends StackPane {
         return _text;
     }
 
-    /**
-     * Set x location.
-     *
-     * @param _x new x loc.
-     */
-    public void setX(int _x) {
-        this._x = _x;
-    }
-
-    /**
-     * Set y location.
-     *
-     * @param _y new y loc.
-     */
-    public void setY(int _y) {
-        this._y = _y;
-    }
 
     /**
      * Set type of tile.
@@ -127,8 +101,22 @@ public class Tile extends StackPane {
         if (isAllowedType(type)) {
             this._type = type;
         } else {
-            throw new Exception(ILLEGAL_TYPE_ERR);
+            throw new SlimeMouldException(ILLEGAL_TYPE_ERR);
         }
+    }
+
+    public void setElement(Element element) {
+        _element = element;
+    }
+
+    public void becomeMould() throws Exception {
+        setType(Tile.MOULD);
+        setElement(new Mould(_element.get_xPos(), _element.get_yPos()));
+//        getText().setText(MOULD_IMG);
+    }
+
+    public Element getElement() {
+        return _element;
     }
 
     // Helpers //

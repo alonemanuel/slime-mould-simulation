@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public static final String PROJECT_NAME = "Slime Mould Everything";
+    public static final String PROJECT_NAME = "Slime Mould2 Everything";
     Stage window;
     Scene scene1, scene2;
     Button button;
@@ -19,7 +19,7 @@ public class Main extends Application {
         SlimeMouldManager manager = new SlimeMouldManager();
         try {
             manager.start(primaryStage);
-        } catch (Exception e) {
+        } catch (SlimeMouldException e) {
             System.err.println(e.getMessage());
         }
 //
