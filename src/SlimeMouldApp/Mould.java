@@ -1,4 +1,4 @@
-package sample;
+package SlimeMouldApp;
 
 public class Mould {
 

@@ -1,15 +1,8 @@
-package sample;
+package SlimeMouldApp;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -24,11 +17,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         SlimeMouldManager manager = new SlimeMouldManager();
-        manager.start(primaryStage);
+        try {
+            manager.start(primaryStage);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
 //
 //        this.stage = primaryStage;
 //
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("SlimeMouldApp.fxml"));
 //        primaryStage.setTitle("Hello world");
 //        primaryStage.setScene(new Scene(root));
 //        primaryStage.show();
@@ -49,7 +46,7 @@ public class Main extends Application {
 //        VBox leftMenu = new VBox();
 //        Button buttonD = new Button("CHANGE STYLE");
 ////        buttonD.setOnAction(e->{
-////            scene2.getStylesheets().add("./sample/Viper.css");
+////            scene2.getStylesheets().add("./SlimeMouldApp/Viper.css");
 ////        });
 //
 //        Button buttonE = new Button("E");

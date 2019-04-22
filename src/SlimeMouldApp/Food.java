@@ -1,4 +1,4 @@
-package sample;
+package SlimeMouldApp;
 
 public class Food {
     public static final double DEAFULT_CALORIES = 1.0;

@@ -1,4 +1,4 @@
-package sample;
+package SlimeMouldApp;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
