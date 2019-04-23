@@ -79,10 +79,6 @@ public class SlimeMouldManager {
             for (int x = 0; x < X_TILES; x++) {
                 Tile tile = new Tile(x, y);
                 worldGrid[x][y] = tile;
-//                tile.downNeighbor = (y == Y_TILES - 1) ? null : worldGrid[x][y + 1];
-//                tile.upNeighbor = (y == 0) ? null : worldGrid[x][y - 1];
-//                tile.rightNeighbor = (x == X_TILES - 1) ? null : worldGrid[x + 1][y];
-//                tile.leftNeighbor = (x == 0) ? null : worldGrid[x - 1][y];
                 worldPane.getChildren().add(tile);
             }
         }
@@ -130,7 +126,8 @@ public class SlimeMouldManager {
     }
 
     // Movement //
-    private void run() throws Exception {
+    public void run() throws SlimeMouldException{
+        mouldHeadTile.makeTileDark();
         ((Mould) mouldHeadTile.getElement()).searchForFood(worldGrid);
     }
 
@@ -155,24 +152,21 @@ public class SlimeMouldManager {
     /**
      * @return root structure of app.
      */
-    public Parent getRootStruct() throws Exception {
-        BorderPane borderPane = new BorderPane();
+    public Parent getMainEvent() throws Exception {
         populateWorld();
-        // Sets world in center of border pane.
-        borderPane.setCenter(worldPane);
-        return borderPane;
+        return worldPane;
     }
 
     /**
      * Starts the show.
      *
-     * @param primaryStage
+     * @param startWindow
      */
-    public void start(Stage primaryStage) throws Exception {
-
-        Scene scene = new Scene(getRootStruct());
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        run();
+    public void start(Stage startWindow) throws Exception {
+        UI.initialize(this, startWindow);
+        UI.setMainEvent(getMainEvent());
+        startWindow.show();
+//        run();
+//                Parent root = FXMLLoader.load(getClass().getResource("SlimeMouldApp.fxml"));
     }
 }

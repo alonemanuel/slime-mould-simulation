@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,7 +35,7 @@ public class ExitMenu {
         });
 
 
-        VBox layout = new VBox(10);
+        HBox layout = new HBox(10);
         layout.getChildren().addAll(lbl1, noButton, yesButton);
         layout.setAlignment(Pos.CENTER);
 

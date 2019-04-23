@@ -29,15 +29,20 @@ public class Mould extends Element {
         _text = MOULD_TXT;
     }
 
-    public void searchForFood(Tile[][] worldGrid) throws Exception {
-
+    public void searchForFood(Tile[][] worldGrid) throws SlimeMouldException {
+        Random rand = new Random();
         int xMove = isLeftOfHead() ? LEFT_MOVE : RIGHT_MOVE;
         int yMove = isBelowHead() ? DOWN_MOVE : UP_MOVE;
-        Random rand = new Random();
         boolean randMove = rand.nextBoolean();
         xMove = randMove ? xMove : 0;
         yMove = randMove ? 0 : yMove;
         Tile randNeighbor = getNeighbor(worldGrid, xMove, yMove);
+        if (randNeighbor == null){
+            randNeighbor = getNeighbor(worldGrid, yMove, xMove);
+            if(randNeighbor == null){
+                System.out.println("Everything's null!");       // TODO: DEBUG only
+            }
+        }
         switch (randNeighbor.getType()) {
             case Tile.EMPTY:
                 spreadTo(randNeighbor);
@@ -49,19 +54,28 @@ public class Mould extends Element {
                 ((Mould) randNeighbor.getElement()).searchForFood(worldGrid);
                 break;
         }
+        if (!hasFoundFood) {
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            mouldHead.searchForFood(worldGrid);
+        }
+        System.out.println("Done searching for food."); //DEBUG
     }
 
-    private void spreadTo(Tile neighbor) throws Exception {
+    private void spreadTo(Tile neighbor) throws SlimeMouldException {
         neighbor.becomeMould();
     }
 
-    private void eatFood(Tile neighbor) throws Exception {
+    private void eatFood(Tile neighbor) throws SlimeMouldException {
         //TODO: Energy should grow!
         hasFoundFood = true;
         neighbor.becomeMould();
     }
 
-    private Tile getNeighbor(Tile[][] worldGrid, int xDelta, int yDelta) throws Exception {
+    private Tile getNeighbor(Tile[][] worldGrid, int xDelta, int yDelta) throws SlimeMouldException {
 
         Tile downNeighbor = (_yPos == Y_TILES - 1) ? null : worldGrid[_xPos][_yPos + 1];
         Tile upNeighbor = (_yPos == 0) ? null : worldGrid[_xPos][_yPos - 1];
@@ -78,18 +92,20 @@ public class Mould extends Element {
         }
     }
 
-    private boolean isLeftOfHead() throws Exception {
+    private boolean isLeftOfHead() throws SlimeMouldException {
+        Random rand = new Random();
         if (mouldHead == null) {
             throw new SlimeMouldException(NULL_HEAD_ERR);
         }
-        return _xPos < mouldHead.get_xPos();
+        return (_xPos == mouldHead.get_xPos()) ? rand.nextBoolean() : _xPos < mouldHead.get_xPos();
     }
 
-    private boolean isBelowHead() throws Exception {
+    private boolean isBelowHead() throws SlimeMouldException {
+        Random rand = new Random();
         if (mouldHead == null) {
             throw new SlimeMouldException(NULL_HEAD_ERR);
         }
-        return _yPos > mouldHead.get_yPos();
+        return (_yPos == mouldHead.get_yPos()) ? rand.nextBoolean() : _yPos > mouldHead.get_yPos();
     }
 
 }

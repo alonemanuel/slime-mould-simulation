@@ -64,9 +64,9 @@ public class Tile extends StackPane {
      */
     public Tile(int xPos, int yPos) {
         _type = EMPTY;
-        _element = new Empty(xPos, yPos);
         _text = new Text();
-        _text.textProperty().bind(_element._text.textProperty());
+        setElement(new Empty(xPos, yPos));
+//        _text.textProperty().bind(_element._text.textProperty());
         // Init rectangle
         _border = new Rectangle(TILE_SIZE - 2, TILE_SIZE - 2);
         _border.setStroke(Color.LIGHTGRAY);
@@ -97,7 +97,7 @@ public class Tile extends StackPane {
      *
      * @param type new type of tile.
      */
-    public void setType(int type) throws Exception {
+    public void setType(int type) throws SlimeMouldException {
         if (isAllowedType(type)) {
             this._type = type;
         } else {
@@ -107,9 +107,14 @@ public class Tile extends StackPane {
 
     public void setElement(Element element) {
         _element = element;
+        _text.setText(element._text.getText());
     }
 
-    public void becomeMould() throws Exception {
+    public void makeTileDark() {
+        _border.setFill(Color.DARKGRAY);
+    }
+
+    public void becomeMould() throws SlimeMouldException {
         setType(Tile.MOULD);
         setElement(new Mould(_element.get_xPos(), _element.get_yPos()));
 //        getText().setText(MOULD_IMG);
