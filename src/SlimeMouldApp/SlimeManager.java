@@ -7,13 +7,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Random;
-import java.util.Set;
-
 
 import static SlimeMouldApp.Element.*;
-import static SlimeMouldApp.Mould.ADJ_NEIGHBOR_ERR;
 
 
 /**
@@ -26,28 +23,7 @@ public class SlimeManager {
     /**
      * Size of tile (height == width == size)
      */
-    public static final int REPR_SIZE = 20;
-    /**
-     * Width of screen.
-     */
-    private static final int W = (800/REPR_SIZE) *REPR_SIZE;
-    /**
-     * Height of screen.
-     */
-    private static final int H = (600/REPR_SIZE) *REPR_SIZE;
-    /**
-     * Number of X aligned tiles.
-     */
-    protected static final int X_TILES = W / REPR_SIZE;
-    /**
-     * Number of Y aligned tiles.
-     */
-    protected static final int Y_TILES = H / REPR_SIZE;
-
-    /**
-     * Number of food items.
-     */
-    private static final int NUM_OF_FOODS = 5;
+    public static final int REPR_SIZE = 15;
     /**
      * "Image" (=string) of food.
      */
@@ -56,8 +32,29 @@ public class SlimeManager {
      * "Image" (=string) of mould.
      */
     public static final String MOULD_IMG = "X";
+    /**
+     * Width of screen.
+     */
+    private static final int W = (800 / REPR_SIZE) * REPR_SIZE;
+    /**
+     * Number of X aligned tiles.
+     */
+    protected static final int X_TILES = W / REPR_SIZE;
+    /**
+     * Height of screen.
+     */
+    private static final int H = (600 / REPR_SIZE) * REPR_SIZE;
+    /**
+     * Number of Y aligned tiles.
+     */
+    protected static final int Y_TILES = H / REPR_SIZE;
+    /**
+     * Number of food items.
+     */
+    private static final int NUM_OF_FOODS = 8;
 
     // Fields //
+    public NodeMap nodePool;
     /**
      * Grid (2D Tile array) representing world.
      */
@@ -67,8 +64,7 @@ public class SlimeManager {
      */
     private Pane worldPane;
     private Mould mouldHead;
-
-    private Set<Node> nodePool = new HashSet<>();
+    private Node foodFound;
 
 
     // Methods //
@@ -76,20 +72,13 @@ public class SlimeManager {
     /**
      * Default ctor.
      */
-    public SlimeManager()  {
+    public SlimeManager() {
         worldGrid = new Element[X_TILES][Y_TILES];
-        initNodePool();
+        nodePool = new NodeMap(X_TILES, Y_TILES);
         worldPane = new Pane();
         System.out.println("Created manager");
     }
 
-    private void initNodePool() {
-        for (int x = 0; x < X_TILES; x++) {
-            for (int y = 0; y < Y_TILES; y++) {
-                nodePool.add(new Node(x, y));
-            }
-        }
-    }
 
     public void update() {
         AnimationTimer timer = new AnimationTimer() {
@@ -103,7 +92,30 @@ public class SlimeManager {
 
     private void moveSlime() {
         if (mouldHead.didFindFood()) {
+//            System.out.println("Found food!");
+            AStar astar = new AStar(nodePool, nodePool.getNode(mouldHead._xPos, mouldHead._yPos), foodFound);
+            LinkedList<Node> path = astar.search();
+            Mould currMould = mouldHead;
+            for (Node currNode : path) {
 
+                Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
+                // Choose how to act according to the chosen neighbor.
+                switch (currNeighbor.getType()) {
+                    case EMPTY_TYPE:
+                        spreadTo(currMould, currNeighbor);
+//                        didSpread = true;
+                        break;
+                    case FOOD_TYPE:
+                        eatFood(currMould, (Food) currNeighbor);
+                        foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
+//                        didSpread = true;
+                        break;
+                    case MOULD_TYPE:
+                        currMould = (Mould) currNeighbor;
+                        currMould.saturate();
+                        break;
+                }
+            }
         } else {
             findFood();
         }
@@ -147,7 +159,8 @@ public class SlimeManager {
                     didSpread = true;
                     break;
                 case FOOD_TYPE:
-                    eatFood(currMould, (Food)currNeighbor);
+                    eatFood(currMould, (Food) currNeighbor);
+                    foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
                     didSpread = true;
                     break;
                 case MOULD_TYPE:

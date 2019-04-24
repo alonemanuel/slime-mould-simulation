@@ -1,26 +1,113 @@
 package SlimeMouldApp;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+
 
 public class AStar {
-    public static void aStar(int xStart, int yStart, int xGoal, int yGoal) {
-        // The set of nodes already evaluated
-        Set<Element> closedSet = new HashSet<>();
 
+    private static NodeMap nodePool;
+
+    private Node start;
+    private Node goal;
+    private HashSet<Node> closedSet;
+    private PriorityQueue<Node> openSet;
+    private HashMap<Node, Node> cameFrom;
+    private HashMap<Node, Double> gScore;
+    private HashMap<Node, Double> fScore;
+
+
+    public AStar(NodeMap nodePool, Node start, Node goal) {
+        if (AStar.nodePool == null) {
+            AStar.nodePool = nodePool;
+        }
+        this.start = start;
+        this.goal = goal;
+
+        // The set of nodes already evaluated
+        closedSet = new HashSet<>();
         // The set of currently discovered nodes that are not evaluated yet.
-        // Initially, only the start node is known.
-        Set<Element> openSet = new HashSet<>();
-        openSet.add(Mould.getMouldHead());
+        openSet = new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                return Double.compare(fScore.get(o1), fScore.get(o2));
+            }
+        });
 
         // For each node, which node it can most efficiently be reached from.
-        // If a node can be reached from many nodes, cameFrom will eventually contain the most efficient previous step
-        Map<Integer, Element> cameFrom = new HashMap<>();
+        // If a node can be reached from many nodes, cameFrom will eventually contain the most
+        // efficient previous step
+        cameFrom = nodePool.getNodeMap(null);
 
         // For each node, the cost of getting from the start node to that node.
-        Map<Integer, Element> gScore = new HashMap<>(Double.POSITIVE_INFINITY);
+        gScore = nodePool.getNodeMap(Double.POSITIVE_INFINITY);
+
+        // For each node, the total cost of getting from the start node to the goal by passing by
+        // that node. That value is partly known, partly heuristic
+        fScore = nodePool.getNodeMap(Double.POSITIVE_INFINITY);
+
+    }
+
+    private double h(Node node) {
+        return Math.abs((node.xPos - goal.xPos + Math.abs((node.yPos - goal.yPos))));
+    }
+
+    public LinkedList<Node> search() {
+        // Initially, only the start node is know.
+        openSet.add(start);
+
+        // The cost of going from start to start is zero.
+        gScore.put(start, 0.0);
+
+
+        // For the first node, that value is completely heuristic.
+        fScore.put(start, h(start));
+
+        Node currNode;
+        while (openSet.size() > 0) {
+            // The node in openSet having the lowest f()
+            currNode = openSet.poll();
+            closedSet.add(currNode);
+            if (currNode == goal) {
+                return reconstructPath();
+            }
+
+            for (Node neighbor : currNode.neighbors) {
+                // Ignore neighbors which were already evaluated.
+                if (closedSet.contains(neighbor)) {
+                    continue;
+                }
+
+                // The distance from start to a neighbor
+                double tentGScore = gScore.get(currNode) + 1;
+
+                // Discover a new node
+                if (!openSet.contains(neighbor)) {
+                    openSet.add(neighbor);  // TODO: cut contains() time with visited field of node?
+                } else if (tentGScore >= gScore.get(neighbor)) {
+                    continue;
+                }
+
+                // This path is the best up to now. Record it!
+                cameFrom.put(neighbor, currNode);
+                gScore.put(neighbor, tentGScore);
+                fScore.put(neighbor, tentGScore + h(neighbor));
+
+            }
+
+        }
+
+        return null; // Never executes
+    }
+
+    private LinkedList<Node> reconstructPath() {
+        LinkedList<Node> path = new LinkedList<>();
+        Node curr = goal;
+        path.addFirst(goal);
+        while (cameFrom.get(curr) != null) {
+            curr = cameFrom.get(curr);
+            path.addFirst(curr);
+        }
+        return path;
     }
 
 

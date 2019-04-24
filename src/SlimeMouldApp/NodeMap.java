@@ -1,24 +1,32 @@
 package SlimeMouldApp;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 
 public class NodeMap {
 
     private int X, Y;
-    private Map<Integer, Map<Integer, Node>> _nodeMap;
+    private HashMap<Integer, Map<Integer, Node>> _nodeMap;
+    private HashSet<Node> _nodeSet;
 
     public NodeMap(int _X, int _Y) {
         X = _X;
         Y = _Y;
         _nodeMap = new HashMap<>();
+        _nodeSet = new HashSet<>();
+
         Map<Integer, Node> _yMap;
+        Node currNode;
         for (int x = 0; x < _X; x++) {
             _yMap = new HashMap<>();
             _nodeMap.put(x, _yMap);
             for (int y = 0; y < Y; y++) {
-                _yMap.put(y, new Node(x, y));
+                currNode = new Node(x, y);
+                _yMap.put(y, currNode);
+                _nodeSet.add(currNode);
             }
         }
         createEdges();
@@ -27,6 +35,7 @@ public class NodeMap {
     private void createEdges() {
         for (int x = 0; x < X; x++) {
             for (int y = 0; y < Y; y++) {
+                System.out.println("Creating " + x + ", " + y);
                 Node currNode = getNode(x, y);
                 currNode.addNeighbor(getNode(x, y - 1));
                 currNode.addNeighbor(getNode(x, y + 1));
@@ -37,7 +46,27 @@ public class NodeMap {
     }
 
     public Node getNode(int x, int y) {
-        return _nodeMap.get(x).get(y);
+        Map<Integer, Node> xNode = _nodeMap.get(x);
+        if (xNode != null) {
+            return xNode.get(y);
+        } else {
+            return null;
+        }
+    }
+
+
+    public <E> HashMap<Node, E> getNodeMap(E defaultVal) {
+        HashMap<Node, E> asMap = new HashMap<>();
+        for (int x = 0; x < X; x++) {
+            for (int y = 0; y < Y; y++) {
+                asMap.put(_nodeMap.get(x).get(y), defaultVal);
+            }
+        }
+        return asMap;
+    }
+
+    public HashSet<Node> getNodeSet() {
+        return _nodeSet;
     }
 
 

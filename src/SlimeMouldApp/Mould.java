@@ -4,6 +4,7 @@ package SlimeMouldApp;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
 
@@ -81,10 +82,16 @@ public class Mould extends Element {
      */
     @Override
     public void setRepr() {
-        _elementRepr = new Circle();
+//        _elementRepr = new Circle();
+//        _elementRepr.setTranslateX(_xPos * REPR_SIZE);
+//        _elementRepr.setTranslateY(_yPos * REPR_SIZE);
+//        ((Circle) _elementRepr).setRadius(REPR_SIZE / 2);
+//        _elementRepr.setFill(MOULD_COLOR);
+        _elementRepr = new Rectangle();
         _elementRepr.setTranslateX(_xPos * REPR_SIZE);
         _elementRepr.setTranslateY(_yPos * REPR_SIZE);
-        ((Circle) _elementRepr).setRadius(REPR_SIZE / 2);
+        ((Rectangle) _elementRepr).setHeight(REPR_SIZE);
+        ((Rectangle) _elementRepr).setWidth(REPR_SIZE);
         _elementRepr.setFill(MOULD_COLOR);
     }
 
