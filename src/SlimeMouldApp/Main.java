@@ -16,7 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        SlimeMouldManager manager = new SlimeMouldManager();
+        SlimeManager manager = new SlimeManager();
         try {
             manager.start(primaryStage);
         } catch (SlimeMouldException e) {

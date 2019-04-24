@@ -17,9 +17,7 @@ public class UI {
     public static final String FOOD_SEARCH_TXT = "Search for food";
     public static final String NOT_EAT_ERR = "Err: Could not eat food.";
     public static Stage startWindow;
-    public static Scene startScene;
     public static BorderPane borderPane;
-    public static SlimeMouldManager manager;
 
     public static Parent getHeader() {
         Text headerText = new Text("SLIME MOULD EVERYTHING");
@@ -31,35 +29,33 @@ public class UI {
     public static Parent getFooter(){
 
         Button exitButton = new Button(EXIT_BUTTON_TXT);
-        Button foodSearchButton = new Button(FOOD_SEARCH_TXT);
-        foodSearchButton.setOnAction(e-> {
-            try {
-                manager.run();
-            } catch (SlimeMouldException ex) {
-                throw new SlimeMouldException(NOT_EAT_ERR);
-            }
-        });
+//        Button foodSearchButton = new Button(FOOD_SEARCH_TXT);
+//        foodSearchButton.setOnAction(e-> {
+//            try {
+//                manager.run();
+//            } catch (SlimeMouldException ex) {
+//                throw new SlimeMouldException(NOT_EAT_ERR);
+//            }
+//        });
         exitButton.setOnAction(e->closeProgram());
         HBox footer = new HBox();
-        footer.getChildren().addAll(exitButton, foodSearchButton);
+        footer.getChildren().addAll(exitButton);
         return footer;
     }
 
-    public static void initialize(SlimeMouldManager _manager, Stage _startWindow) {
-        manager=_manager;
-        startWindow = _startWindow;
+    public static BorderPane initialize(Stage startWindow) {
         startWindow.setOnCloseRequest(e -> {
             e.consume();
             closeProgram();
         });
         startWindow.setTitle(STAGE_TITLE);
-        borderPane = new BorderPane();
+        BorderPane borderPane = new BorderPane();
         Parent header = getHeader();
         Parent footer = getFooter();
         borderPane.setTop(header);
         borderPane.setBottom(footer);
-        startScene = new Scene(borderPane);
-        startWindow.setScene(startScene);
+        startWindow.setScene(new Scene(borderPane));
+        return borderPane;
     }
 
     public static void setMainEvent(Parent mainEvent) {
