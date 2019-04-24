@@ -10,6 +10,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
+
 public class UI {
 
     public static final String STAGE_TITLE = "Slime Mould Everything";
@@ -17,7 +19,6 @@ public class UI {
     public static final String FOOD_SEARCH_TXT = "Search for food";
     public static final String NOT_EAT_ERR = "Err: Could not eat food.";
     public static Stage startWindow;
-    public static BorderPane borderPane;
 
     public static Parent getHeader() {
         Text headerText = new Text("SLIME MOULD EVERYTHING");
@@ -43,7 +44,8 @@ public class UI {
         return footer;
     }
 
-    public static BorderPane initialize(Stage startWindow) {
+    public static BorderPane initialize(Stage _startWindow) {
+        startWindow = _startWindow;
         startWindow.setOnCloseRequest(e -> {
             e.consume();
             closeProgram();
@@ -58,9 +60,6 @@ public class UI {
         return borderPane;
     }
 
-    public static void setMainEvent(Parent mainEvent) {
-        borderPane.setCenter(mainEvent);
-    }
 
 
     private static void closeProgram() {

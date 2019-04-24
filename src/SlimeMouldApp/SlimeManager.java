@@ -74,7 +74,7 @@ public class SlimeManager {
     public SlimeManager() throws Exception {
         worldGrid = new Element[X_TILES][Y_TILES];
         worldPane = new Pane();
-
+        System.out.println("Created manager");
     }
 
     private void update() {
@@ -205,7 +205,7 @@ public class SlimeManager {
 
         } while (currElem.getType() != Element.EMPTY_TYPE);
         worldGrid[randX][randY] = new Mould(randX, randY);
-        mouldHead = (Mould) worldGrid[randX][randY];
+        mouldHead = Mould.mouldHead;
     }
 
 
@@ -213,6 +213,7 @@ public class SlimeManager {
      * Populate world with all needed elements.
      */
     public void populateWorld() throws Exception {
+        System.out.println("Populating world");
         worldPane.setPrefSize(W, H);
         populateElements();
         populateFood();
@@ -241,14 +242,6 @@ public class SlimeManager {
 
 
     /**
-     * @return root structure of app.
-     */
-    public Parent getMainEvent() throws Exception {
-        populateWorld();
-        return worldPane;
-    }
-
-    /**
      * Starts the show.
      *
      * @param startWindow
@@ -259,9 +252,13 @@ public class SlimeManager {
 
         BorderPane borderPane = UI.initialize(startWindow);
         populateWorld();
+        drawElements();
         borderPane.setCenter(worldPane);
+        System.out.println("Set center");
         update();
+        System.out.println("Updated");
         // Shows the show
         startWindow.show();
+        System.out.println("Showed");
     }
 }

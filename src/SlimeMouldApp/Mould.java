@@ -30,7 +30,7 @@ public class Mould extends Element {
     /**
      * The head of the entire mould.
      */
-    static Mould mouldHead;
+    public static Mould mouldHead;
     /**
      * True iff the mould has encountered food.
      */
@@ -54,6 +54,7 @@ public class Mould extends Element {
         super(xPos, yPos);
         // Inits the mould head to be the first created mould.
         if (mouldHead == null) {
+//            _elementRepr.setFill();   // TODO headMould
             mouldHead = this;
             hasFoundFood = false;
         }
@@ -68,22 +69,21 @@ public class Mould extends Element {
     @Override
     public void setElementRepr() {
         _elementRepr = new Circle();
-        ((Circle) _elementRepr).setCenterX(_xPos);
-        ((Circle) _elementRepr).setCenterY(_yPos);
+        ((Circle) _elementRepr).setTranslateX(_xPos*REPR_SIZE);
+        ((Circle) _elementRepr).setTranslateY(_yPos*REPR_SIZE);
         ((Circle) _elementRepr).setRadius(REPR_SIZE / 2);
         ((Circle) _elementRepr).setFill(MOULD_COLOR);
     }
 
     public int generateXMove(boolean randPicker) {
         int xMove = isLeftOfHead() ? LEFT_MOVE : RIGHT_MOVE;
-        return  randPicker ? xMove : 0;
+        return randPicker ? xMove : 0;
     }
 
     public int generateYMove(boolean randPicker) {
         int yMove = isBelowHead() ? DOWN_MOVE : UP_MOVE;
-        return  randPicker ? yMove : 0;
+        return randPicker ? 0 : yMove;
     }
-
 
 
     /**
@@ -135,9 +135,6 @@ public class Mould extends Element {
     public double getEnergy() {
         return _energy;
     }
-
-
-
 
 
     /**

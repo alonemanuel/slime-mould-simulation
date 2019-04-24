@@ -17,8 +17,8 @@ public class Empty extends Element {
     @Override
     public void setElementRepr() {
         _elementRepr = new Circle();
-        ((Circle) _elementRepr).setCenterX(_xPos);
-        ((Circle) _elementRepr).setCenterY(_yPos);
+        ((Circle) _elementRepr).setTranslateX(_xPos * REPR_SIZE);
+        ((Circle) _elementRepr).setTranslateY(_yPos*REPR_SIZE);
         ((Circle) _elementRepr).setRadius(REPR_SIZE / 2);
         ((Circle) _elementRepr).setFill(EMPTY_COLOR);
     }
