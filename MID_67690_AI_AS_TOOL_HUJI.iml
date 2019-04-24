@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="JavaFX-11" level="application" />
+    <orderEntry type="library" name="com.google.guava:guava:27.1-jre" level="project" />
   </component>
 </module>

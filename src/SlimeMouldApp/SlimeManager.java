@@ -7,7 +7,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+
 
 import static SlimeMouldApp.Element.*;
 import static SlimeMouldApp.Mould.ADJ_NEIGHBOR_ERR;
@@ -17,6 +20,8 @@ import static SlimeMouldApp.Mould.ADJ_NEIGHBOR_ERR;
  * A class representing a Slime Mould2 Manager.
  */
 public class SlimeManager {
+
+
     // Constants //
     /**
      * Size of tile (height == width == size)
@@ -63,6 +68,8 @@ public class SlimeManager {
     private Pane worldPane;
     private Mould mouldHead;
 
+    private Set<Node> nodePool = new HashSet<>();
+
 
     // Methods //
 
@@ -71,8 +78,17 @@ public class SlimeManager {
      */
     public SlimeManager()  {
         worldGrid = new Element[X_TILES][Y_TILES];
+        initNodePool();
         worldPane = new Pane();
         System.out.println("Created manager");
+    }
+
+    private void initNodePool() {
+        for (int x = 0; x < X_TILES; x++) {
+            for (int y = 0; y < Y_TILES; y++) {
+                nodePool.add(new Node(x, y));
+            }
+        }
     }
 
     public void update() {
