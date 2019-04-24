@@ -1,7 +1,5 @@
 package SlimeMouldApp;
 
-import static SlimeMouldApp.SlimeManager.REPR_SIZE;
-
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 
@@ -22,14 +20,14 @@ abstract class Element {
         _xPos = xPos;
         _yPos = yPos;
         setType();
-        setElementRepr();
+        setRepr();
     }
 
     public Shape getElementRepr() {
         return _elementRepr;
     }
 
-    public abstract void setElementRepr();
+    public abstract void setRepr();
 
     public abstract void setType();
 

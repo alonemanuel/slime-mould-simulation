@@ -3,8 +3,6 @@ package SlimeMouldApp;
 // Imports //
 
 import javafx.animation.AnimationTimer;
-import javafx.scene.Parent;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -23,15 +21,15 @@ public class SlimeManager {
     /**
      * Size of tile (height == width == size)
      */
-    public static final int REPR_SIZE = 40;
+    public static final int REPR_SIZE = 20;
     /**
      * Width of screen.
      */
-    private static final int W = REPR_SIZE * 20;
+    private static final int W = (800/REPR_SIZE) *REPR_SIZE;
     /**
      * Height of screen.
      */
-    private static final int H = REPR_SIZE * 15;
+    private static final int H = (600/REPR_SIZE) *REPR_SIZE;
     /**
      * Number of X aligned tiles.
      */
@@ -71,13 +69,13 @@ public class SlimeManager {
     /**
      * Default ctor.
      */
-    public SlimeManager() throws Exception {
+    public SlimeManager()  {
         worldGrid = new Element[X_TILES][Y_TILES];
         worldPane = new Pane();
         System.out.println("Created manager");
     }
 
-    private void update() {
+    public void update() {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -101,7 +99,7 @@ public class SlimeManager {
         boolean didSpread = false;
         int xMove, newX, xPos;
         int yMove, newY, yPos;
-        Mould currMould = mouldHead;
+        Mould currMould = Mould.getMouldHead();
         Element currNeighbor;
         do {
             // Generate the X and Y positions for the next move. Mould will try and move away from the head.
@@ -113,15 +111,17 @@ public class SlimeManager {
             xPos = currMould.getXPos();
             yPos = currMould.getYPos();
             if ((xMove * yMove != 0) || (Math.abs(xMove) + Math.abs(yMove) == 0)) {
-                throw new SlimeMouldException(ADJ_NEIGHBOR_ERR);
+                System.err.println("No such thing!");
             }
             // TODO: The code below can enter an endless loop when no available tile exists?
-            newX = ((xPos + xMove >= 0) && (xPos + xMove <= X_TILES - 1)) ? xPos + xMove : xPos;
-            newY = ((yPos + yMove >= 0) && (yPos + yMove <= Y_TILES - 1)) ? yPos + yMove : yPos;
+            newX = ((xPos + xMove >= 0) && (xPos + xMove <= X_TILES - 1)) ? xPos + xMove : -1;
+            newY = ((yPos + yMove >= 0) && (yPos + yMove <= Y_TILES - 1)) ? yPos + yMove : -1;
             currNeighbor = ((newX < 0) || (newY < 0)) ? null : worldGrid[newX][newY];
 
             if (currNeighbor == null) {
-                System.out.println("Everything's null!");       // TODO: DEBUG only
+//                System.out.println("Everything's null!");       // TODO: DEBUG only
+                didSpread = true;
+                continue;
             }
 
             // Choose how to act according to the chosen neighbor.
@@ -136,6 +136,7 @@ public class SlimeManager {
                     break;
                 case MOULD_TYPE:
                     currMould = (Mould) currNeighbor;
+                    currMould.saturate();
                     break;
             }
 
@@ -147,14 +148,15 @@ public class SlimeManager {
     public void eatFood(Mould currMould, Food currFood) {
         // TODO: Manage energy consumption
         spreadTo(currMould, currFood);
-        mouldHead.setHasFoundFood();
+        mouldHead.setFoundFood();
     }
 
     public void spreadTo(Mould currMould, Element currNeighbor) {
         int xPos = currNeighbor.getXPos();
         int yPos = currNeighbor.getYPos();
-        worldGrid[xPos][yPos] = new Mould(xPos, yPos);
-        worldPane.getChildren().add(worldGrid[xPos][yPos].getElementRepr());
+        Mould toSpread = new Mould(xPos, yPos);
+        worldGrid[xPos][yPos] = toSpread;
+        worldPane.getChildren().add(toSpread.getElementRepr());
     }
 
 
@@ -181,7 +183,7 @@ public class SlimeManager {
     /**
      * Populate world with food.
      */
-    public void populateFood() throws Exception {
+    public void populateFood() {
         Random rand = new Random();
         for (int i = 0; i < NUM_OF_FOODS; i++) {
             int randX = rand.nextInt(X_TILES);
@@ -193,7 +195,7 @@ public class SlimeManager {
     /**
      * Place mould in world.
      */
-    public void placeMould() throws Exception {
+    public void placeMould() {
         Element currElem;
         int randX, randY;
         Random rand = new Random();
@@ -205,26 +207,20 @@ public class SlimeManager {
 
         } while (currElem.getType() != Element.EMPTY_TYPE);
         worldGrid[randX][randY] = new Mould(randX, randY);
-        mouldHead = Mould.mouldHead;
+        mouldHead = Mould.getMouldHead();
     }
 
 
     /**
      * Populate world with all needed elements.
      */
-    public void populateWorld() throws Exception {
+    public void populateWorld() {
         System.out.println("Populating world");
         worldPane.setPrefSize(W, H);
         populateElements();
         populateFood();
         placeMould();
     }
-
-//    // Movement //
-//    public void run() throws SlimeMouldException {
-//        mouldHeadTile.makeTileDark();
-//        ((Mould) mouldHeadTile.getElement()).searchForFood(worldGrid);
-//    }
 
 
     // Helpers //
@@ -236,26 +232,34 @@ public class SlimeManager {
      * @param xPos x pos of food.
      * @param yPos y pos of food.
      */
-    private void addFood(int xPos, int yPos) throws Exception {
+    private void addFood(int xPos, int yPos) {
         worldGrid[xPos][yPos] = new Food(xPos, yPos);
     }
 
+    public void restart(Stage currWindow) {
+        currWindow.close();
+        worldGrid = new Element[X_TILES][Y_TILES];
+        worldPane = new Pane();
+        Mould.restart();
+        System.out.println("Created manager");
+        start(new Stage());
+    }
 
     /**
      * Starts the show.
      *
      * @param startWindow
      */
-    public void start(Stage startWindow) throws Exception {
+    public void start(Stage startWindow) {
 
         // Initializes UI elements
 
-        BorderPane borderPane = UI.initialize(startWindow);
+        BorderPane borderPane = UI.initialize(startWindow, this);
         populateWorld();
         drawElements();
         borderPane.setCenter(worldPane);
         System.out.println("Set center");
-        update();
+//        update();
         System.out.println("Updated");
         // Shows the show
         startWindow.show();

@@ -3,16 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/AStar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Element.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Element.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Empty.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Empty.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Food.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Mould.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/Mould.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/SlimeManager$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/SlimeManager$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/SlimeManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/SlimeManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/UI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/SlimeMouldApp/UI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/AStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecyclingBin/AStar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlimeMouldApp/Element.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlimeMouldApp/Empty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlimeMouldApp/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Food2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecyclingBin/Food2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Mould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlimeMouldApp/Mould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Mould2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecyclingBin/Mould2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecyclingBin/Simulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/SlimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlimeMouldApp/SlimeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecyclingBin/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SlimeMouldApp/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SlimeMouldApp/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RecyclingBin/World.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,231 +82,102 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4671141">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Main.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="540">
-                  <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#2572#2573#0" expanded="true" />
-                    <element signature="e#2600#2601#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/ex2_oop/Ex2 supplied material-20180412/oop.ex2/oop/ex2/GameGUI.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1772">
-                  <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Simulator.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="264">
-                  <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Food2.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/UI.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Tile.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="253">
-                  <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Mould.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="159">
-                  <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#4385#4386#0" expanded="true" />
-                    <element signature="e#4419#4420#0" expanded="true" />
-                    <element signature="e#4772#4773#0" expanded="true" />
-                    <element signature="e#4807#4808#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/World.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="14" selection-end-line="14" />
-                  <folding>
-                    <element signature="e#0#247#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/ex2_oop/Ex2 supplied material-20180412/oop.ex2/oop/ex2/AutoDisposal.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1051" />
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/ex2_oop/Ex2 supplied material-20180412/oop.ex2/oop/ex2/GamePanel.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="335">
-                  <caret line="98" column="5" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="290">
-                  <caret line="79" column="36" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="259" column="10" lean-forward="true" selection-start-line="259" selection-start-column="10" selection-end-line="259" selection-end-column="10" />
-                  <folding>
-                    <element signature="docComment;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#TILE_SIZE#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#W#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#H#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#X_TILES#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#Y_TILES#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#NUM_OF_FOODS#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#MOULD_IMG#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#worldGrid#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;field#worldPane#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;method#SlimeMouldManager#0;class#SlimeMouldManager#0" />
-                    <element signature="e#1724#1862#0" expanded="true" />
-                    <element signature="e#1861#1862#0" expanded="true" />
-                    <element signature="docComment;method#populateTiles#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;method#populateFood#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;method#placeMould#0;class#SlimeMouldManager#0" />
-                    <element signature="docComment;method#addFood#0;class#SlimeMouldManager#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Food.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="308">
-                  <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#322#323#0" expanded="true" />
-                    <element signature="e#372#373#0" expanded="true" />
-                    <element signature="e#959#960#0" expanded="true" />
-                    <element signature="e#979#980#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Mould2.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-3882">
-                  <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Empty.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="226">
-                  <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#423#424#0" expanded="true" />
-                    <element signature="e#456#457#0" expanded="true" />
-                    <element signature="e#696#697#0" expanded="true" />
-                    <element signature="e#716#717#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Element.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="297">
-                  <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#615#616#0" expanded="true" />
-                    <element signature="e#650#651#0" expanded="true" />
-                    <element signature="e#491#492#0" expanded="true" />
-                    <element signature="e#515#516#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/UI.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-963">
-                  <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-600">
+              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2572#2573#0" expanded="true" />
+                <element signature="e#2600#2601#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="78">
+              <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+              <folding>
+                <element signature="e#6423#6424#0" expanded="true" />
+                <element signature="e#6483#6484#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Mould.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="198" column="18" selection-start-line="198" selection-start-column="18" selection-end-line="198" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/paint/Color.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="450" column="22" selection-start-line="450" selection-start-column="17" selection-end-line="450" selection-end-column="22" />
+              <folding>
+                <element signature="e#18785#18786#0" expanded="true" />
+                <element signature="e#18848#18849#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/ex2_oop/Ex2 supplied material-20180412/oop.ex2/oop/ex2/GameGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1772">
+              <caret line="78" column="42" selection-start-line="78" selection-start-column="42" selection-end-line="78" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RecyclingBin/Simulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RecyclingBin/Food2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/UI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1560">
+              <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -320,9 +202,12 @@
       <find>lace</find>
       <find>sleep</find>
       <find>sl</find>
-      <find>throw</find>
       <find>worldPane</find>
       <find>mouldHea</find>
+      <find>upda</find>
+      <find>darke</find>
+      <find>no</find>
+      <find>throw</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -359,16 +244,16 @@
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/ExitMenu.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Mould2.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Element.java" />
-        <option value="$PROJECT_DIR$/src/SlimeMouldApp/Main.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Simulator.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Tile.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/World.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Food2.java" />
-        <option value="$PROJECT_DIR$/src/SlimeMouldApp/UI.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Empty.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Food.java" />
+        <option value="$PROJECT_DIR$/src/SlimeMouldApp/Main.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/Mould.java" />
+        <option value="$PROJECT_DIR$/src/SlimeMouldApp/UI.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldApp/SlimeManager.java" />
       </list>
     </option>
@@ -437,6 +322,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\alon_emanuel_drive\School\Year 2\Semester_2\67690_AI_as_a_Tool\MidProject\MID_67690_AI_AS_TOOL_HUJI\src\RecyclingBin" />
       <recent name="E:\alon_emanuel_drive\School\Year 2\Semester_2\67690_AI_as_a_Tool\MidProject\MID_67690_AI_AS_TOOL_HUJI\src" />
       <recent name="E:\alon_emanuel_drive\School\Year 2\Semester_2\67690_AI_as_a_Tool\MidProject\MID_67690_AI_AS_TOOL_HUJI\src\sample" />
       <recent name="E:\alon_emanuel_drive\School\Year 2\Semester_2\67690_AI_as_a_Tool\MidProject\MID_67690_AI_AS_TOOL_HUJI\src\" />
@@ -539,12 +425,12 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1555679999006" duration="15787000" />
-      <workItem from="1555927629522" duration="57211000" />
+      <workItem from="1555927629522" duration="64163000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74300000" />
+    <option name="totallyTimeSpent" value="81252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -560,7 +446,7 @@
       <window_info id="Favorites" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32841823" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29490617" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3766756" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -637,50 +523,50 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java</url>
+          <url>file://$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java</url>
           <line>103</line>
           <properties />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java</url>
+          <url>file://$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java</url>
           <line>130</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java</url>
+          <url>file://$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java</url>
           <line>155</line>
           <properties />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java</url>
+          <url>file://$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java</url>
           <line>122</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java</url>
+          <url>file://$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java</url>
           <line>123</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java</url>
+          <url>file://$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java</url>
           <line>124</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SlimeMouldApp/UI.java</url>
-          <line>35</line>
+          <line>43</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeManager.java</url>
-          <line>99</line>
+          <line>97</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
@@ -747,17 +633,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/AStar.java">
+    <entry file="file://$PROJECT_DIR$/src/RecyclingBin/AStar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -928,19 +807,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2572#2573#0" expanded="true" />
-            <element signature="e#2600#2601#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/World.java">
+    <entry file="file://$PROJECT_DIR$/src/RecyclingBin/World.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" selection-end-line="14" />
@@ -950,31 +817,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-963">
-          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Food2.java">
+    <entry file="file://$PROJECT_DIR$/src/RecyclingBin/Food2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeMouldManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="79" column="36" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Mould2.java">
+    <entry file="file://$PROJECT_DIR$/src/RecyclingBin/Mould2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3882">
           <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
@@ -1009,56 +859,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Tile.java">
+    <entry file="file://$PROJECT_DIR$/src/module-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RecyclingBin/SlimeMouldManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="79" column="36" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RecyclingBin/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="44" column="25" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Simulator.java">
+    <entry file="file://$PROJECT_DIR$/src/RecyclingBin/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Mould.java">
+    <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/paint/Color.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        <state relative-caret-position="119">
+          <caret line="450" column="22" selection-start-line="450" selection-start-column="17" selection-end-line="450" selection-end-column="22" />
+          <folding>
+            <element signature="e#18785#18786#0" expanded="true" />
+            <element signature="e#18848#18849#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4385#4386#0" expanded="true" />
-            <element signature="e#4419#4420#0" expanded="true" />
-            <element signature="e#4772#4773#0" expanded="true" />
-            <element signature="e#4807#4808#0" expanded="true" />
+            <element signature="e#2572#2573#0" expanded="true" />
+            <element signature="e#2600#2601#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/Mould.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="198" column="18" selection-start-line="198" selection-start-column="18" selection-end-line="198" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="52" column="27" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SlimeMouldApp/SlimeManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="259" column="10" lean-forward="true" selection-start-line="259" selection-start-column="10" selection-end-line="259" selection-end-column="10" />
+        <state relative-caret-position="78">
+          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
           <folding>
-            <element signature="docComment;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#TILE_SIZE#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#W#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#H#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#X_TILES#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#Y_TILES#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#NUM_OF_FOODS#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#MOULD_IMG#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#worldGrid#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;field#worldPane#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;method#SlimeMouldManager#0;class#SlimeMouldManager#0" />
-            <element signature="e#1724#1862#0" expanded="true" />
-            <element signature="e#1861#1862#0" expanded="true" />
-            <element signature="docComment;method#populateTiles#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;method#populateFood#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;method#placeMould#0;class#SlimeMouldManager#0" />
-            <element signature="docComment;method#addFood#0;class#SlimeMouldManager#0" />
+            <element signature="e#6423#6424#0" expanded="true" />
+            <element signature="e#6483#6484#0" expanded="true" />
           </folding>
         </state>
       </provider>

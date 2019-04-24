@@ -21,7 +21,7 @@ public class Food extends Element {
     }
 
     @Override
-    public void setElementRepr() {
+    public void setRepr() {
         _elementRepr = new Circle();
         ((Circle) _elementRepr).setTranslateX(_xPos*REPR_SIZE);
         ((Circle) _elementRepr).setTranslateY(_yPos*REPR_SIZE);
