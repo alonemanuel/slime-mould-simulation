@@ -19,5 +19,10 @@ public class Node {
             neighbors.add(neighbor);
         }
     }
+
+    public double getManhattanTo(Node other) {
+        return Math.abs((xPos - other.xPos + Math.abs((yPos - other.yPos))));
+
+    }
 }
 

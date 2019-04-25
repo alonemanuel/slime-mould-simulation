@@ -2,8 +2,9 @@ package SlimeMouldApp;
 
 // Imports //
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
@@ -15,27 +16,35 @@ import static SlimeMouldApp.SlimeManager.REPR_SIZE;
  */
 public class Mould extends Element {
 
+
     // Constants //
+    public static final int MAX_ENERGY = 10;
+    public static final double vitalityFactor = 0.2;
+    public static final double dyingFactor = -0.1;
+    public static final double headThreshold = 6;
+
+
     public static final int RIGHT_MOVE = 1;
     public static final int LEFT_MOVE = -1;
     public static final int DOWN_MOVE = 1;
     public static final int UP_MOVE = -1;
     public static final String NULL_HEAD_ERR = "Err: Null mould head.";
     public static final String ADJ_NEIGHBOR_ERR = "Err: Neighbor must be adjacent.";
-    public static final int DEFAULT_ENERGY = 10;
-    public static final double ENERGY_TRANSFER_FACTOR = 0.2;
-    public static final Color MOULD_COLOR = Color.YELLOW;
-    public static final Color MOULD_HEAD_COLOR = Color.BLACK;
+
+    public static final int DEFAULT_ENERGY = 5;
+    public static final double ENERGY_LOSS_FACTOR = 0.2;
+    public static final Color MOULD_COLOR = Color.rgb(30, 30, 0);
+    public static final Color MOULD_HEAD_COLOR = Color.rgb(182, 181, 0);
 
     // Statics //
+    /**
+     * True iff the mould has encountered food.
+     */
+    public static boolean hasFoundFood;
     /**
      * The head of the entire mould.
      */
     private static Mould mouldHead;
-    /**
-     * True iff the mould has encountered food.
-     */
-    private static boolean hasFoundFood;
 
     // Fields //
     /**
@@ -43,7 +52,13 @@ public class Mould extends Element {
      */
     private double _energy;
 
+    private DoubleProperty _energyP;
+
     // Methods //
+
+    public Mould(Node node) {
+        this(node.xPos, node.yPos);
+    }
 
     /**
      * Ctor.
@@ -59,7 +74,17 @@ public class Mould extends Element {
             mouldHead = this;
             hasFoundFood = false;
         }
-        _energy = DEFAULT_ENERGY;
+        initEnergy();
+    }
+
+    private void initEnergy() {
+        _energyP = new SimpleDoubleProperty(DEFAULT_ENERGY);
+        _energyP.addListener((v, oldValue, newValue) -> {
+            int rg = 255 * _energyP.intValue() / MAX_ENERGY;
+            Color newColor = Color.rgb(rg, rg, 0);
+            _elementRepr.setFill(newColor);
+            _elementRepr.setStroke(newColor);
+        });
     }
 
     /**
@@ -67,6 +92,11 @@ public class Mould extends Element {
      */
     public static Mould getMouldHead() {
         return mouldHead;
+    }
+
+    public static void restart() {
+        mouldHead = null;
+        hasFoundFood = false;
     }
 
     /**
@@ -113,15 +143,14 @@ public class Mould extends Element {
         return randPicker ? 0 : yMove;
     }
 
-
     /**
      * Gives energy to given mould.
      *
      * @param other mould to give energy to.
      */
     private void giveEnergyTo(Mould other) {
-//        double energyToGive = ENERGY_TRANSFER_FACTOR * _energy;
-        double energyToGive = ENERGY_TRANSFER_FACTOR;
+//        double energyToGive = ENERGY_LOSS_FACTOR * _energy;
+        double energyToGive = ENERGY_LOSS_FACTOR;
         _energy -= energyToGive;
         other.setEnergy(other.getEnergy() + energyToGive);
     }
@@ -146,8 +175,8 @@ public class Mould extends Element {
      * @param other mould to get energy from.
      */
     private void getEnergyFrom(Mould other) {
-        //        double energyToGive = ENERGY_TRANSFER_FACTOR * _energy;
-        double energyToGet = ENERGY_TRANSFER_FACTOR;
+        //        double energyToGive = ENERGY_LOSS_FACTOR * _energy;
+        double energyToGet = ENERGY_LOSS_FACTOR;
         _energy += energyToGet;
         other.setEnergy(other.getEnergy() - energyToGet);
     }
@@ -192,19 +221,20 @@ public class Mould extends Element {
         return (_yPos == mouldHead.getYPos()) ? rand.nextBoolean() : _yPos > mouldHead.getYPos();
     }
 
-
     public void saturate() {
+//        _elementRepr.setFill(((Color)_elementRepr.getFill()).brighter());
         Color color = (Color) _elementRepr.getFill();
-        _elementRepr.setFill(color.deriveColor(0, 1, 0.95, 1));
-        if (((Color) _elementRepr.getFill()).getBrightness() > 0.9) {
+        System.out.println(color.getBrightness());
+        _elementRepr.setFill(color.deriveColor(0, 1, 1.05, 1));
+        if (((Color) _elementRepr.getFill()).getBrightness() > 0.3) {
             mouldHead = this;
         }
         //        _elementRepr.setFill(Color.hsb(color.getHue(), Math.sqrt(color.getSaturation()), Math.pow(color.getBrightness(), 2)));
 //        _elementRepr.setFill(Color.BLACK);
     }
 
-    public static void restart() {
-        mouldHead = null;
-        hasFoundFood = false;
+    public void reenergize() {
+
     }
+
 }

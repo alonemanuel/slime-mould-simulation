@@ -9,7 +9,7 @@ import static SlimeMouldApp.SlimeManager.REPR_SIZE;
 
 public class Empty extends Element {
 
-    public static final Color EMPTY_COLOR = Color.LIGHTGRAY;
+    public static final Color EMPTY_COLOR = Color.BLACK;
 
     public Empty(int xPos, int yPos) {
         super(xPos, yPos);
@@ -28,6 +28,7 @@ public class Empty extends Element {
         ((Rectangle) _elementRepr).setHeight(REPR_SIZE);
         ((Rectangle) _elementRepr).setWidth(REPR_SIZE);
         _elementRepr.setFill(EMPTY_COLOR);
+        _elementRepr.setStroke(EMPTY_COLOR);
     }
 
     @Override

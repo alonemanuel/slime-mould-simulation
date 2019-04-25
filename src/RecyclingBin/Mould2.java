@@ -22,7 +22,7 @@
 //    public static final String ADJ_NEIGHBOR_ERR = "Err: Neighbor must be adjacent.";
 //    public static final Text MOULD_TXT = new Text(MOULD_IMG);
 //    public static final int DEFAULT_ENERGY = 10;
-//    public static final double ENERGY_TRANSFER_FACTOR = 0.2;
+//    public static final double ENERGY_LOSS_FACTOR = 0.2;
 //
 //    // Statics //
 //    /**
@@ -121,8 +121,8 @@
 //     * @param other mould to give energy to.
 //     */
 //    private void giveEnergyTo(Mould other) {
-////        double energyToGive = ENERGY_TRANSFER_FACTOR * _energy;
-//        double energyToGive = ENERGY_TRANSFER_FACTOR;
+////        double energyToGive = ENERGY_LOSS_FACTOR * _energy;
+//        double energyToGive = ENERGY_LOSS_FACTOR;
 //        _energy -= energyToGive;
 //        other.setEnergy(other.getEnergy() + energyToGive);
 //    }
@@ -133,8 +133,8 @@
 //     * @param other mould to get energy from.
 //     */
 //    private void getEnergyFrom(Mould other) {
-//        //        double energyToGive = ENERGY_TRANSFER_FACTOR * _energy;
-//        double energyToGet = ENERGY_TRANSFER_FACTOR;
+//        //        double energyToGive = ENERGY_LOSS_FACTOR * _energy;
+//        double energyToGet = ENERGY_LOSS_FACTOR;
 //        _energy += energyToGet;
 //        other.setEnergy(other.getEnergy() - energyToGet);
 //    }

@@ -7,10 +7,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.Random;
 
-import static SlimeMouldApp.Element.*;
+import static SlimeMouldApp.Element.MOULD_TYPE;
 
 
 /**
@@ -67,6 +67,22 @@ public class SlimeManager {
     private Node foodFound;
 
 
+    private boolean isInMiddleOfEat;
+    private Node nextEatNode;
+    private Node eatStart;
+    private Node eatGoal;
+    private AStar eatStar;
+
+    private boolean isInMiddleOfSpread;
+    private Node nextSpreadNode;
+    private Node spreadStart;
+    private Node spreadGoal;
+    private AStar spreadStar;
+
+    private HashSet<Node> foodsFound;
+    private HashSet<Mould> mouldHeads;
+
+
     // Methods //
 
     /**
@@ -76,6 +92,7 @@ public class SlimeManager {
         worldGrid = new Element[X_TILES][Y_TILES];
         nodePool = new NodeMap(X_TILES, Y_TILES);
         worldPane = new Pane();
+        foodsFound = new HashSet<>();
         System.out.println("Created manager");
     }
 
@@ -84,94 +101,207 @@ public class SlimeManager {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                moveSlime();
+                // For each node head, move.
+                for (Mould head : mouldHeads) {
+                    eat(head);
+                    spread(head);
+                }
+                reenergizeMoulds();
             }
         };
         timer.start();
     }
 
-    private void moveSlime() {
-        if (mouldHead.didFindFood()) {
-//            System.out.println("Found food!");
-            AStar astar = new AStar(nodePool, nodePool.getNode(mouldHead._xPos, mouldHead._yPos), foodFound);
-            LinkedList<Node> path = astar.search();
-            Mould currMould = mouldHead;
-            for (Node currNode : path) {
-
-                Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
-                // Choose how to act according to the chosen neighbor.
-                switch (currNeighbor.getType()) {
-                    case EMPTY_TYPE:
-                        spreadTo(currMould, currNeighbor);
-//                        didSpread = true;
-                        break;
-                    case FOOD_TYPE:
-                        eatFood(currMould, (Food) currNeighbor);
-                        foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
-//                        didSpread = true;
-                        break;
-                    case MOULD_TYPE:
-                        currMould = (Mould) currNeighbor;
-                        currMould.saturate();
-                        break;
+    public void reenergizeMoulds() {
+        if (reenergRate < reenergFactor) {
+            regRate++;
+            return;
+        }
+        reenergRate = 1;
+        for (int x = 0; x < X_TILES; x++) {
+            for (int y = 0; y < Y_TILES; y++) {
+                if (worldGrid[x][y].getType() != MOULD_TYPE) {
+                    continue;
                 }
+                ((Mould) worldGrid[x][y]).reenergize();
             }
-        } else {
-            findFood();
         }
     }
 
+    public void eat(Mould head) {
+        // Do not try and eat if no food has already been found.
+        if (!Mould.hasFoundFood) {
+            return;
+        }
 
-    private void findFood() {
-        Random rand = new Random();
-        boolean didSpread = false;
-        int xMove, newX, xPos;
-        int yMove, newY, yPos;
-        Mould currMould = Mould.getMouldHead();
-        Element currNeighbor;
-        do {
-            // Generate the X and Y positions for the next move. Mould will try and move away from the head.
-            boolean randPicker = rand.nextBoolean();
-            xMove = currMould.generateXMove(randPicker);
-            yMove = currMould.generateYMove(randPicker);
-
-            // Get the actual neighbor from the grid of tiles.
-            xPos = currMould.getXPos();
-            yPos = currMould.getYPos();
-            if ((xMove * yMove != 0) || (Math.abs(xMove) + Math.abs(yMove) == 0)) {
-                System.err.println("No such thing!");
+        if (isInMiddleOfEat) {
+            nextEatNode = eatStar.search();
+            if (nextEatNode == eatGoal) {
+                isInMiddleOfEat = false;
             }
-            // TODO: The code below can enter an endless loop when no available tile exists?
-            newX = ((xPos + xMove >= 0) && (xPos + xMove <= X_TILES - 1)) ? xPos + xMove : -1;
-            newY = ((yPos + yMove >= 0) && (yPos + yMove <= Y_TILES - 1)) ? yPos + yMove : -1;
-            currNeighbor = ((newX < 0) || (newY < 0)) ? null : worldGrid[newX][newY];
-
-            if (currNeighbor == null) {
-//                System.out.println("Everything's null!");       // TODO: DEBUG only
-                didSpread = true;
-                continue;
-            }
-
-            // Choose how to act according to the chosen neighbor.
-            switch (currNeighbor.getType()) {
-                case EMPTY_TYPE:
-                    spreadTo(currMould, currNeighbor);
-                    didSpread = true;
-                    break;
-                case FOOD_TYPE:
-                    eatFood(currMould, (Food) currNeighbor);
-                    foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
-                    didSpread = true;
-                    break;
-                case MOULD_TYPE:
-                    currMould = (Mould) currNeighbor;
-                    currMould.saturate();
-                    break;
-            }
+            spreadTo(nextEatNode);
+        } else {
+            eatStart = nodePool.getNode(head._xPos, head._yPos);
+            eatGoal = getFoodClosestTo(eatStart);
+            eatStar = new AStar(nodePool, eatStart, eatGoal);
+            isInMiddleOfEat = true;
+            nextEatNode = eatStar.search();
+            spreadTo(nextEatNode);
+        }
 
 
-        } while (!didSpread);
     }
+
+    public void spread(Mould head) {
+        if (isInMiddleOfSpread) {
+            nextSpreadNode = spreadStar.search();
+            if (nextSpreadNode == spreadGoal) {
+                isInMiddleOfSpread = false;
+            }
+            spreadTo(nextSpreadNode);
+        } else {
+            spreadStart = nodePool.getNode(head._xPos, head._yPos);
+            spreadGoal = getNodeAwayFrom(spreadStart);
+            spreadStar = new AStar(nodePool, spreadStart, spreadGoal);
+            isInMiddleOfSpread = true;
+            nextSpreadNode = spreadStar.search();
+            spreadTo(nextSpreadNode);
+        }
+
+
+    }
+
+
+    private Node getFoodClosestTo(Node subject) {
+        double minDistance = Double.POSITIVE_INFINITY;
+        double currDistance;
+        Node minFood = null;
+
+        for (Node currFood : foodsFound) {
+            if (minFood == null) {
+                minFood = currFood;
+                minDistance = currFood.getManhattanTo(minFood);
+            }
+            currDistance = subject.getManhattanTo(currFood);
+            if (currDistance <= minDistance) {
+                minFood = currFood;
+                minDistance = currDistance;
+            }
+        }
+        return minFood;
+    }
+
+    private Node getNodeAwayFrom(Node awayFrom) {
+        // TODO: Make better (and actually something)
+        Node nodeAway;
+        int x, y;
+        Random rand = new Random();
+        do {
+            x = rand.nextInt(4);
+            y = rand.nextInt(4);
+            nodeAway = nodePool.getNode(x, y);
+        } while (worldGrid[x][y].getType() == MOULD_TYPE);
+        return nodeAway;
+    }
+
+
+    private void spreadTo(Node nodeToSpread) {
+        int xPos = nodeToSpread.xPos;
+        int yPos = nodeToSpread.yPos;
+        Mould toSpread = new Mould(xPos, yPos);
+        Element currElem = worldGrid[xPos][yPos];
+        worldGrid[xPos][yPos] = toSpread;
+        replaceElement(currElem, toSpread);
+    }
+
+    private void replaceElement(Element toRemove, Element toAdd) {
+        worldPane.getChildren().add(toAdd.getElementRepr());
+        worldPane.getChildren().remove(toRemove.getElementRepr());
+    }
+
+
+//    private void moveSlime() {
+//        if (mouldHead.didFindFood()) {
+////            System.out.println("Found food!");
+//            AStar astar = new AStar(nodePool, nodePool.getNode(mouldHead._xPos, mouldHead._yPos), foodFound);
+//            LinkedList<Node> path = astar.search();
+//            Mould currMould = mouldHead;
+//            for (Node currNode : path) {
+//
+//                Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
+//                // Choose how to act according to the chosen neighbor.
+//                switch (currNeighbor.getType()) {
+//                    case EMPTY_TYPE:
+//                        spreadTo(currMould, currNeighbor);
+////                        didSpread = true;
+//                        break;
+//                    case FOOD_TYPE:
+//                        eatFood(currMould, (Food) currNeighbor);
+//                        foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
+////                        didSpread = true;
+//                        break;
+//                    case MOULD_TYPE:
+//                        currMould = (Mould) currNeighbor;
+//                        currMould.saturate();
+//                        break;
+//                }
+//            }
+//        } else {
+//            findFood();
+//        }
+//    }
+//
+//
+//    private void findFood() {
+//        Random rand = new Random();
+//        boolean didSpread = false;
+//        int xMove, newX, xPos;
+//        int yMove, newY, yPos;
+//        Mould currMould = Mould.getMouldHead();
+//        Element currNeighbor;
+//        do {
+//            // Generate the X and Y positions for the next move. Mould will try and move away from the head.
+//            boolean randPicker = rand.nextBoolean();
+//            xMove = currMould.generateXMove(randPicker);
+//            yMove = currMould.generateYMove(randPicker);
+//
+//            // Get the actual neighbor from the grid of tiles.
+//            xPos = currMould.getXPos();
+//            yPos = currMould.getYPos();
+//            if ((xMove * yMove != 0) || (Math.abs(xMove) + Math.abs(yMove) == 0)) {
+//                System.err.println("No such thing!");
+//            }
+//            // TODO: The code below can enter an endless loop when no available tile exists?
+//            newX = ((xPos + xMove >= 0) && (xPos + xMove <= X_TILES - 1)) ? xPos + xMove : -1;
+//            newY = ((yPos + yMove >= 0) && (yPos + yMove <= Y_TILES - 1)) ? yPos + yMove : -1;
+//            currNeighbor = ((newX < 0) || (newY < 0)) ? null : worldGrid[newX][newY];
+//
+//            if (currNeighbor == null) {
+////                System.out.println("Everything's null!");       // TODO: DEBUG only
+//                didSpread = true;
+//                continue;
+//            }
+//
+//            // Choose how to act according to the chosen neighbor.
+//            switch (currNeighbor.getType()) {
+//                case EMPTY_TYPE:
+//                    spreadTo(currMould, currNeighbor);
+//                    didSpread = true;
+//                    break;
+//                case FOOD_TYPE:
+//                    eatFood(currMould, (Food) currNeighbor);
+//                    foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
+//                    didSpread = true;
+//                    break;
+//                case MOULD_TYPE:
+//                    currMould = (Mould) currNeighbor;
+//                    currMould.saturate();
+//                    break;
+//            }
+//
+//
+//        } while (!didSpread);
+//    }
 
 
     public void eatFood(Mould currMould, Food currFood) {
