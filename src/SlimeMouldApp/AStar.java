@@ -6,25 +6,44 @@ import java.util.*;
 public class AStar {
 
     private static NodeMap nodePool;
-
+    /**
+     * True iff mould is in middle of spread.
+     */
+    public boolean isInMiddleOfSpread;
+    /**
+     * Current spreading node.
+     */
+    public LinkedList<Node> nextSpreadNodes;
+    /**
+     * Current spreading start.
+     */
+    public Node spreadStart;
+    /**
+     * Current spreading goal.
+     */
+    public Node spreadGoal;
     private Node start;
     private Node goal;
     private HashSet<Node> closedSet;
     private PriorityQueue<Node> openSet;
     private HashMap<Node, Node> cameFrom;
     private HashMap<Node, Double> gScore;
+
+
+    // Spreading fields.
     private HashMap<Node, Double> fScore;
     private Node currNode;
     private HashSet<Node> currNeighbors;
+    private Iterator<Node> neighborsIter;
 
 
-    public AStar(NodeMap nodePool, Node start, Node goal) {
+    public AStar(NodeMap nodePool, Node _start, Node _goal) {
         if (AStar.nodePool == null) {
             AStar.nodePool = nodePool;
         }
-        this.start = start;
-        this.goal = goal;
-
+        start = _start;
+        goal = _goal;
+        isInMiddleOfSpread = false;
         // The set of nodes already evaluated
         closedSet = new HashSet<>();
         // The set of currently discovered nodes that are not evaluated yet.
@@ -59,13 +78,15 @@ public class AStar {
 
         // Init currNeighbors
         currNeighbors = new HashSet<>();
+
     }
 
     private double h(Node node) {
         return Math.abs((node.xPos - goal.xPos + Math.abs((node.yPos - goal.yPos))));
     }
 
-    public Node search() {
+    public LinkedList<Node> search() {
+        LinkedList<Node> result = new LinkedList<>();
 
         if (openSet.size() == 0) {
             // Do something
@@ -76,85 +97,37 @@ public class AStar {
         currNode = openSet.poll();
         closedSet.add(currNode);
 
-        // If we ran through all neighbors
-        if (currNeighbors.size() == 0) {
-            currNeighbors = new HashSet<>(currNode.neighbors);
-        }
-
-//        closedSet.add(currNode);  // Why is this here?
         if (currNode == goal) {
-            return goal;
+            result.add(goal);
+            return result;
         }
 
-        Iterator<Node> neighbors = currNeighbors.iterator();
-        Node neighbor;
-        do {
-            neighbor = neighbors.next();
-            // What if neighbor becomes null? Can this even happen?
-        } while (closedSet.contains(neighbor));
+        for (Node neighbor : currNode.neighbors) {
+            // Ignore neighbors which were already evaluated.
+            if (closedSet.contains(neighbor)) {
+                continue;
+            }
 
+            // The distance from start to a neighbor
+            double tentGScore = gScore.get(currNode) + 1;
 
-        // The distance from start to a neighbor
+            // Discover a new node
+            if (!openSet.contains(neighbor)) {
+                openSet.add(neighbor);  // TODO: cut contains() time with visited field of node?
+            } else if (tentGScore >= gScore.get(neighbor)) {
+                continue;
+            }
 
-        double tentGScore = gScore.get(currNode) + 1;
-        while (openSet.contains(neighbor) && tentGScore >= gScore.get(neighbor) {
-            openSet.remove(neighbor);
-            openSet.add(neighbor);
-            neighbor = neighbors.next();
+            // This path is the best up to now. Record it!
+            cameFrom.put(neighbor, currNode);
+            gScore.put(neighbor, tentGScore);
+            fScore.put(neighbor, tentGScore + h(neighbor));
+            result.add(neighbor);
         }
-
-        if (!openSet.contains(neighbor)) {
-            openSet.add(neighbor);
-        }
-
-        // This path is the best up to now. Record it!
-        cameFrom.put(neighbor, currNode);
-        gScore.put(neighbor, tentGScore);
-        fScore.put(neighbor, tentGScore + h(neighbor));
-        return neighbor;
+        return result;
 
     }
 
-//
-//    public LinkedList<Node> search() {
-//
-//        while (openSet.size() > 0) {
-//            // The node in openSet having the lowest f()
-//            currNode = openSet.poll();
-//            closedSet.add(currNode);
-//            if (currNode == goal) {
-//                return reconstructPath();
-//            }
-//
-//            for (Node neighbor : currNode.neighbors) {
-//                // Ignore neighbors which were already evaluated.
-//                if (closedSet.contains(neighbor)) {
-//                    continue;
-//                }
-//
-//                // The distance from start to a neighbor
-//                double tentGScore = gScore.get(currNode) + 1;
-//
-//                // Discover a new node
-//                if (!openSet.contains(neighbor)) {
-//                    openSet.add(neighbor);  // TODO: cut contains() time with visited field of node?
-//                } else if (tentGScore >= gScore.get(neighbor)) {
-//                    openSet.remove(neighbor);
-//                    openSet.add(neighbor);
-//                    continue;
-//                }
-//
-//                // This path is the best up to now. Record it!
-//                cameFrom.put(neighbor, currNode);
-//                gScore.put(neighbor, tentGScore);
-//                fScore.put(neighbor, tentGScore + h(neighbor));
-//
-//            }
-//
-//        }
-//
-//        return null; // Never executes
-//    }
 
     private LinkedList<Node> reconstructPath() {
         LinkedList<Node> path = new LinkedList<>();

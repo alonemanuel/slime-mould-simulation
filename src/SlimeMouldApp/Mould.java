@@ -19,8 +19,8 @@ public class Mould extends Element {
 
     // Constants //
     public static final int MAX_ENERGY = 10;
-    public static final double vitalityFactor = 0.2;
-    public static final double dyingFactor = -0.1;
+    public static final double VITALITY_FACTOR = 2;
+    public static final double DYING_FACTOR = -0.05;
     public static final double headThreshold = 6;
 
 
@@ -68,23 +68,7 @@ public class Mould extends Element {
      */
     public Mould(int xPos, int yPos) {
         super(xPos, yPos);
-        // Inits the mould head to be the first created mould.
-        if (mouldHead == null) {
-            _elementRepr.setFill(MOULD_HEAD_COLOR);
-            mouldHead = this;
-            hasFoundFood = false;
-        }
         initEnergy();
-    }
-
-    private void initEnergy() {
-        _energyP = new SimpleDoubleProperty(DEFAULT_ENERGY);
-        _energyP.addListener((v, oldValue, newValue) -> {
-            int rg = 255 * _energyP.intValue() / MAX_ENERGY;
-            Color newColor = Color.rgb(rg, rg, 0);
-            _elementRepr.setFill(newColor);
-            _elementRepr.setStroke(newColor);
-        });
     }
 
     /**
@@ -97,6 +81,19 @@ public class Mould extends Element {
     public static void restart() {
         mouldHead = null;
         hasFoundFood = false;
+    }
+
+    private void updateRepr() {
+        int rg = 255 * _energyP.intValue() / MAX_ENERGY;
+        Color newColor = Color.rgb(rg, rg, 0);
+        _elementRepr.setFill(newColor);
+        _elementRepr.setStroke(newColor);
+    }
+
+    private void initEnergy() {
+        _energyP = new SimpleDoubleProperty(this, "_energyP", DEFAULT_ENERGY);
+        updateRepr();
+        _energyP.addListener((v, oldValue, newValue) -> updateRepr());
     }
 
     /**
@@ -112,11 +109,6 @@ public class Mould extends Element {
      */
     @Override
     public void setRepr() {
-//        _elementRepr = new Circle();
-//        _elementRepr.setTranslateX(_xPos * REPR_SIZE);
-//        _elementRepr.setTranslateY(_yPos * REPR_SIZE);
-//        ((Circle) _elementRepr).setRadius(REPR_SIZE / 2);
-//        _elementRepr.setFill(MOULD_COLOR);
         _elementRepr = new Rectangle();
         _elementRepr.setTranslateX(_xPos * REPR_SIZE);
         _elementRepr.setTranslateY(_yPos * REPR_SIZE);
@@ -234,7 +226,16 @@ public class Mould extends Element {
     }
 
     public void reenergize() {
+        lowerEnergy();
+    }
 
+    public void upEnergy() {
+        this._energyP.set(_energyP.doubleValue() + VITALITY_FACTOR);
+
+    }
+
+    private void lowerEnergy() {
+        this._energyP.set(_energyP.doubleValue() + DYING_FACTOR);
     }
 
 }
