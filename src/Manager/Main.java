@@ -21,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         System.out.println("Starting primary stage...");
-        Parent root = FXMLLoader.load(getClass().getResource("Manager/manager.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("manager.fxml"));
         primaryStage.setTitle(WINDOW_TITLE);
         primaryStage.setScene(new Scene(root));
 //        primaryStage.sizeToScene();
@@ -86,7 +86,7 @@ public class Main extends Application {
             System.out.println("File is saved!");
             window.close();
         }
-    }
+    }       
 
     public static void main(String[] args) {
         launch(args);

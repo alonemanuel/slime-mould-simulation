@@ -170,22 +170,16 @@ public class Mould extends Element {
     /**
      * @return true if mould is left of headMould, random if mould is headMould.
      */
-    private boolean isLeftOfHead() throws SlimeMouldException {
+    private boolean isLeftOfHead() {
         Random rand = new Random();
-        if (mouldHead == null) {
-            throw new SlimeMouldException(NULL_HEAD_ERR);
-        }
         return (_xPos == mouldHead.getXPos()) ? rand.nextBoolean() : _xPos < mouldHead.getXPos();
     }
 
     /**
      * @return true if mould is below headMould, random if mould is headMould.
      */
-    private boolean isBelowHead() throws SlimeMouldException {
+    private boolean isBelowHead() {
         Random rand = new Random();
-        if (mouldHead == null) {
-            throw new SlimeMouldException(NULL_HEAD_ERR);
-        }
         return (_yPos == mouldHead.getYPos()) ? rand.nextBoolean() : _yPos > mouldHead.getYPos();
     }
 

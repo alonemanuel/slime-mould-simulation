@@ -3,7 +3,7 @@ package Logic;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
 
-abstract class Element {
+public abstract class Element {
 
     public static final int EMPTY_TYPE = 0;
     public static final int FOOD_TYPE = 1;
@@ -11,8 +11,8 @@ abstract class Element {
 
 
     public Text _text;
-    protected int _xPos;
-    protected int _yPos;
+    public int _xPos;
+    public int _yPos;
     protected int _type;
     protected Shape _elementRepr;
 

@@ -2,6 +2,7 @@ package Manager;
 
 // Imports //
 
+import Logic.Element;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -9,7 +10,9 @@ import javafx.stage.Stage;
 import java.util.LinkedList;
 import java.util.Random;
 
-import static Element.*;
+import Logic.*;
+
+import static Logic.Element.*;
 
 
 /**
@@ -230,7 +233,7 @@ public class SlimeManager {
             randY = rand.nextInt(Y_TILES);
             currElem = worldGrid[randX][randY];
 
-        } while (currElem.getType() != Element.EMPTY_TYPE);
+        } while (currElem.getType() != EMPTY_TYPE);
         place(new Mould(randX, randY));
         mouldHead = Mould.getMouldHead();
     }
