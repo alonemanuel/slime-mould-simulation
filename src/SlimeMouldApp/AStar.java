@@ -84,6 +84,8 @@ public class AStar {
                 if (!openSet.contains(neighbor)) {
                     openSet.add(neighbor);  // TODO: cut contains() time with visited field of node?
                 } else if (tentGScore >= gScore.get(neighbor)) {
+                    openSet.remove(neighbor);
+                    openSet.add(neighbor);
                     continue;
                 }
 
