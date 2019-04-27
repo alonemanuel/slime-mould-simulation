@@ -1,9 +1,8 @@
-package SlimeMouldApp;
+package Logic;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 
 public class NodeMap {
@@ -35,7 +34,6 @@ public class NodeMap {
     private void createEdges() {
         for (int x = 0; x < X; x++) {
             for (int y = 0; y < Y; y++) {
-                System.out.println("Creating " + x + ", " + y);
                 Node currNode = getNode(x, y);
                 currNode.addNeighbor(getNode(x, y - 1));
                 currNode.addNeighbor(getNode(x, y + 1));

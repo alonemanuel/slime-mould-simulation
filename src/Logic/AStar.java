@@ -1,4 +1,4 @@
-package SlimeMouldApp;
+package Logic;
 
 import java.util.*;
 

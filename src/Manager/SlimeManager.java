@@ -1,16 +1,15 @@
-package SlimeMouldApp;
+package Manager;
 
 // Imports //
 
 import javafx.animation.AnimationTimer;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
 import java.util.Random;
 
-import static SlimeMouldApp.Element.*;
+import static Element.*;
 
 
 /**
@@ -24,14 +23,6 @@ public class SlimeManager {
      * Size of tile (height == width == size)
      */
     public static final int REPR_SIZE = 15;
-    /**
-     * "Image" (=string) of food.
-     */
-    public static final String FOOD_IMG = "O";
-    /**
-     * "Image" (=string) of mould.
-     */
-    public static final String MOULD_IMG = "X";
     /**
      * Width of screen.
      */
@@ -72,10 +63,10 @@ public class SlimeManager {
     /**
      * Default ctor.
      */
-    public SlimeManager() {
+    public SlimeManager(Pane pane) {
         worldGrid = new Element[X_TILES][Y_TILES];
         nodePool = new NodeMap(X_TILES, Y_TILES);
-        worldPane = new Pane();
+        worldPane = pane;
         System.out.println("Created manager");
     }
 
@@ -130,7 +121,7 @@ public class SlimeManager {
         Mould currMould = Mould.getMouldHead();
         Element currNeighbor;
         do {
-            // Generate the X and Y positions for the next move. Mould will try and move away from the head.
+            // Generate the X and Y positions for the next move. Logic.Mould will try and move away from the head.
             boolean randPicker = rand.nextBoolean();
             xMove = currMould.generateXMove(randPicker);
             yMove = currMould.generateYMove(randPicker);
@@ -184,8 +175,7 @@ public class SlimeManager {
         int xPos = currNeighbor.getXPos();
         int yPos = currNeighbor.getYPos();
         Mould toSpread = new Mould(xPos, yPos);
-        worldGrid[xPos][yPos] = toSpread;
-        worldPane.getChildren().add(toSpread.getElementRepr());
+        place(toSpread);
     }
 
 
@@ -203,8 +193,7 @@ public class SlimeManager {
     public void populateElements() {
         for (int y = 0; y < Y_TILES; y++) {
             for (int x = 0; x < X_TILES; x++) {
-                Element element = new Empty(x, y);
-                worldGrid[x][y] = element;
+                place(new Empty(x, y));
             }
         }
     }
@@ -217,8 +206,15 @@ public class SlimeManager {
         for (int i = 0; i < NUM_OF_FOODS; i++) {
             int randX = rand.nextInt(X_TILES);
             int randY = rand.nextInt(Y_TILES);
-            addFood(randX, randY);
+            place(new Food(randX, randY));
+
+//            addFood(randX, randY);
         }
+    }
+
+    private void place(Element toPlace) {
+        worldGrid[toPlace._xPos][toPlace._yPos] = toPlace;
+        worldPane.getChildren().add(toPlace.getElementRepr());
     }
 
     /**
@@ -235,7 +231,7 @@ public class SlimeManager {
             currElem = worldGrid[randX][randY];
 
         } while (currElem.getType() != Element.EMPTY_TYPE);
-        worldGrid[randX][randY] = new Mould(randX, randY);
+        place(new Mould(randX, randY));
         mouldHead = Mould.getMouldHead();
     }
 
@@ -263,6 +259,7 @@ public class SlimeManager {
      */
     private void addFood(int xPos, int yPos) {
         worldGrid[xPos][yPos] = new Food(xPos, yPos);
+
     }
 
     public void restart(Stage currWindow) {
@@ -271,27 +268,13 @@ public class SlimeManager {
         worldPane = new Pane();
         Mould.restart();
         System.out.println("Created manager");
-        start(new Stage());
+//        start(new Stage());
     }
 
     /**
      * Starts the show.
-     *
-     * @param startWindow
      */
-    public void start(Stage startWindow) {
-
-        // Initializes UI elements
-
-        BorderPane borderPane = UI.initialize(startWindow, this);
-        populateWorld();
-        drawElements();
-        borderPane.setCenter(worldPane);
-        System.out.println("Set center");
-//        update();
-        System.out.println("Updated");
-        // Shows the show
-        startWindow.show();
-        System.out.println("Showed");
+    public void start() {
+        populateElements();
     }
 }

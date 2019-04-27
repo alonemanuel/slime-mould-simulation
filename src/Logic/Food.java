@@ -1,11 +1,9 @@
-package SlimeMouldApp;
+package Logic;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 
-import static SlimeMouldApp.SlimeManager.REPR_SIZE;
+import static Manager.SlimeManager.REPR_SIZE;
 
 public class Food extends Element {
     public static final double DEFAULT_CALORIES = 5.;

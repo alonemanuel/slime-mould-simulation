@@ -1,6 +1,9 @@
-package SlimeMouldApp;
+package Manager;
 
+import Close.ExitMenu;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -8,6 +11,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     public static final String PROJECT_NAME = "Slime Mould2 Everything";
+    public static final String WINDOW_TITLE = "Slime Logic.Mould Everything";
     Stage window;
     Scene scene1, scene2;
     Button button;
@@ -16,12 +20,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        SlimeManager manager = new SlimeManager();
-        try {
-            manager.start(primaryStage);
-        } catch (SlimeMouldException e) {
-            System.err.println(e.getMessage());
-        }
+        System.out.println("Starting primary stage...");
+        Parent root = FXMLLoader.load(getClass().getResource("Manager/manager.fxml"));
+        primaryStage.setTitle(WINDOW_TITLE);
+        primaryStage.setScene(new Scene(root));
+//        primaryStage.sizeToScene();
+        primaryStage.show();
+//        primaryStage.setMinWidth(primaryStage.getWidth());
+//        primaryStage.setMinHeight(primaryStage.getHeight());
 //
 //        this.stage = primaryStage;
 //

@@ -1,4 +1,4 @@
-package SlimeMouldApp;
+package Logic;
 
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;

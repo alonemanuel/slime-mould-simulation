@@ -1,4 +1,4 @@
-package SlimeMouldApp;
+package Close;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

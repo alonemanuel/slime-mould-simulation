@@ -1,14 +1,11 @@
-package SlimeMouldApp;
-
-// Imports //
+package Logic;// Imports //
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
 
-import static SlimeMouldApp.SlimeManager.REPR_SIZE;
+import static Manager.SlimeManager.REPR_SIZE;
 
 /**
  * A class representing a mould element.
