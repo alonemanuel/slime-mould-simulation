@@ -43,6 +43,10 @@ public class NodeMap {
         }
     }
 
+    public Node getNode(Element element) {
+        return getNode(element._xPos, element._yPos);
+    }
+
     public Node getNode(int x, int y) {
         Map<Integer, Node> xNode = _nodeMap.get(x);
         if (xNode != null) {

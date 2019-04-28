@@ -7,6 +7,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -65,13 +66,13 @@ public class SlimeManager {
 	 */
 	private Pane worldPane;
 	/**
-	 * The currently found food.
+	 * The currently found foods.
 	 */
-	private Node foodFound;
+	private HashMap<Food, LinkedList<Node>> foodsFound;
 	/**
-	 * Current path constructed by A*.
+	 * Mould heads.
 	 */
-	private LinkedList<Node> currAStarPath;
+	private HashMap<Mould, LinkedList<Node>> mouldHeads;
 	/**
 	 * Animation timer of the program.
 	 */
@@ -91,6 +92,8 @@ public class SlimeManager {
 		worldGrid = new Element[X_TILES][Y_TILES];
 		nodePool = new NodeMap(X_TILES, Y_TILES);
 		worldPane = pane;
+		foodsFound = new HashMap<>();
+		mouldHeads = new HashMap<>();
 		log("Created manager");
 	}
 
@@ -119,11 +122,8 @@ public class SlimeManager {
 		reenergizeMoulds();
 		// Move according to the expansion rate.
 		for (int i = 0; i < EXPANSION_RATE; i++) {
-			if (Mould.didFindFood()) {
-				getFood();
-			} else {
-				searchForFood();
-			}
+			getFood();
+			searchForFood();
 		}
 	}
 
@@ -131,14 +131,20 @@ public class SlimeManager {
 	 *
 	 */
 	private void getFood() {
-		Mould currMould = Mould.getMouldHead();
 		/**
 		 * If food was found, go and find some more
 		 */
+		for (Food food : foodsFound.keySet()) {
+			getSpecificFood(food);
+		}
+	}
+
+	private void getSpecificFood(Food food) {
+		LinkedList<Node> currAStarPath = foodsFound.get(food);
 		if (currAStarPath == null || currAStarPath.size() == 0) {
-			AStar astar = new AStar(nodePool, nodePool.getNode(currMould._xPos, currMould._yPos),
-					foodFound);
+			AStar astar = new AStar(nodePool, nodePool.getNode(Mould.getMouldHead()), nodePool.getNode(food));
 			currAStarPath = astar.search();
+			foodsFound.put(food, currAStarPath);
 		}
 		// Get next node from A*s path.
 		Node currNode = currAStarPath.pop();
@@ -195,7 +201,7 @@ public class SlimeManager {
 				break;
 			case FOOD_TYPE:
 				eatFood((Food) toSpread);
-				foodFound = nodePool.getNode(toSpread._xPos, toSpread._yPos);
+				foodsFound.put((Food)toSpread, null);
 				break;
 			case MOULD_TYPE:
 				spreadToMould((Mould) toSpread);
@@ -208,16 +214,14 @@ public class SlimeManager {
 	 */
 	private void spreadToMould(Mould mould) {
 		mould.saturate();
-		if (((Color) mould.getElementRepr().getFill()).getOpacity() > 0.8) {
-			Mould.setMouldHead(mould);
-		}
+		double opacity = ((Color) mould.getElementRepr().getFill()).getOpacity();
 	}
 
 	/**
 	 * Eats given food found.
 	 */
 	public void eatFood(Food currFood) {
-		// TODO: Manage energy consumption
+		Mould.setFoundFood(true);
 		spreadToEmpty(currFood);
 		currFood.desaturate();
 		if (((Color) currFood.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {
