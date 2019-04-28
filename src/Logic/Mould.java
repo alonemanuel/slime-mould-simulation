@@ -53,6 +53,7 @@ public class Mould extends Element {
         // Inits the mould head to be the first created mould.
         if (mouldHead == null) {
             _elementRepr.setFill(MOULD_HEAD_COLOR);
+            _elementRepr.setStroke(MOULD_HEAD_COLOR);
             mouldHead = this;
             hasFoundFood = false;
         }
@@ -90,6 +91,7 @@ public class Mould extends Element {
         ((Rectangle) _elementRepr).setHeight(REPR_SIZE);
         ((Rectangle) _elementRepr).setWidth(REPR_SIZE);
         _elementRepr.setFill(MOULD_COLOR);
+        _elementRepr.setStroke(MOULD_COLOR);
     }
 
     /**
@@ -187,6 +189,7 @@ public class Mould extends Element {
     public void saturate() {
         Color color = (Color) _elementRepr.getFill();
         _elementRepr.setFill(color.deriveColor(0, 1, 0.95, 1));
+        _elementRepr.setStroke(color.deriveColor(0, 1, 0.95, 1));
         if (((Color) _elementRepr.getFill()).getBrightness() > 0.9) {
             mouldHead = this;
         }

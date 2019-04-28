@@ -2,15 +2,13 @@ package Manager;
 
 // Imports //
 
-import Logic.Element;
+import Logic.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
 import java.util.Random;
-
-import Logic.*;
 
 import static Logic.Element.*;
 
@@ -59,6 +57,14 @@ public class SlimeManager {
     private Pane worldPane;
     private Mould mouldHead;
     private Node foodFound;
+    private LinkedList<Node> currAStarPath;
+
+    AnimationTimer timer = new AnimationTimer() {
+        @Override
+        public void handle(long l) {
+            moveSlime();
+        }
+    };
 
 
     // Methods //
@@ -75,43 +81,45 @@ public class SlimeManager {
 
 
     public void update() {
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-                moveSlime();
-            }
-        };
+//        AnimationTimer timer = new AnimationTimer() {
+//            @Override
+//            public void handle(long l) {
+//                moveSlime();
+//            }
+//        };
         timer.start();
     }
 
-    private void moveSlime() {
-        if (mouldHead.didFindFood()) {
-//            System.out.println("Found food!");
-            AStar astar = new AStar(nodePool, nodePool.getNode(mouldHead._xPos, mouldHead._yPos), foodFound);
-            LinkedList<Node> path = astar.search();
-            Mould currMould = mouldHead;
-            for (Node currNode : path) {
 
-                Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
-                // Choose how to act according to the chosen neighbor.
-                switch (currNeighbor.getType()) {
-                    case EMPTY_TYPE:
-                        spreadTo(currMould, currNeighbor);
-//                        didSpread = true;
-                        break;
-                    case FOOD_TYPE:
-                        eatFood(currMould, (Food) currNeighbor);
-                        foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
-//                        didSpread = true;
-                        break;
-                    case MOULD_TYPE:
-                        currMould = (Mould) currNeighbor;
-                        currMould.saturate();
-                        break;
-                }
-            }
-        } else {
+    private void moveSlime() {
+        if (!mouldHead.didFindFood()) {
             findFood();
+            return;
+        }
+
+        Mould currMould = mouldHead;
+        if (currAStarPath == null || currAStarPath.size() == 0) {
+            AStar astar = new AStar(nodePool, nodePool.getNode(mouldHead._xPos, mouldHead._yPos), foodFound);
+            currAStarPath = astar.search();
+        }
+
+        Node currNode = currAStarPath.pop();
+        Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
+        // Choose how to act according to the chosen neighbor.
+        switch (currNeighbor.getType()) {
+            case EMPTY_TYPE:
+                spreadTo(currMould, currNeighbor);
+//                        didSpread = true;
+                break;
+            case FOOD_TYPE:
+                eatFood(currMould, (Food) currNeighbor);
+                foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
+//                        didSpread = true;
+                break;
+            case MOULD_TYPE:
+                currMould = (Mould) currNeighbor;
+                currMould.saturate();
+                break;
         }
     }
 
@@ -265,13 +273,8 @@ public class SlimeManager {
 
     }
 
-    public void restart(Stage currWindow) {
-        currWindow.close();
-        worldGrid = new Element[X_TILES][Y_TILES];
-        worldPane = new Pane();
-        Mould.restart();
-        System.out.println("Created manager");
-//        start(new Stage());
+    public void restart() {
+        timer.stop();
     }
 
     /**
@@ -280,4 +283,5 @@ public class SlimeManager {
     public void start() {
         populateElements();
     }
+
 }

@@ -1,10 +1,14 @@
 package Manager;
 
 import Close.ExitMenu;
+import Logic.Mould;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
@@ -31,6 +35,8 @@ public class managerController implements Initializable {
     Pane pane;
     @FXML
     Button exitButton;
+    @FXML
+    Button restartButton;
 
 
     ObservableList<String> foodChoiceList = FXCollections.observableArrayList(TKY, TLV,
@@ -39,7 +45,7 @@ public class managerController implements Initializable {
     public void closeProgram() {
         boolean answer = ExitMenu.display("Exit Menu", "Sure you want to exit?");
         if (answer) {
-            ((Stage)exitButton.getScene().getWindow()).close();
+            ((Stage) exitButton.getScene().getWindow()).close();
         }
     }
 
@@ -66,10 +72,15 @@ public class managerController implements Initializable {
 
     public void updateManager() {
         manager.update();
+
     }
 
     public void placeFood() {
-        switch (foodChoiceBox.getValue().toString()) {
+        if (foodChoiceBox.getValue() == null) {
+
+            return;
+        }
+        switch ((String)foodChoiceBox.getValue()) {
             case RDM:
                 manager.populateFood();
         }
@@ -78,5 +89,15 @@ public class managerController implements Initializable {
     public void placeMould() {
         manager.placeMould();
 
+    }
+
+    public void restartButton() {
+        pane.getChildren().clear();
+        Mould.restart();
+        manager.restart();
+        foodChoiceBox.setValue(null);
+        foodChoiceBox.setPromptText("Place found");
+        manager = new SlimeManager(pane);
+        manager.populateElements();
     }
 }

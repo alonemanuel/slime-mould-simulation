@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -11,7 +12,7 @@
 
 <BorderPane fx:id="borderPane" style="-fx-background-color: aquamarine;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.managerController">
     <top>
-        <Text fill="#09080880" strokeType="OUTSIDE" strokeWidth="0.0" text="Slime Logic.Mould Everything" textAlignment="CENTER" BorderPane.alignment="CENTER">
+        <Text fill="#09080880" strokeType="OUTSIDE" strokeWidth="0.0" text="Slime Mould Everything" textAlignment="CENTER" BorderPane.alignment="CENTER">
             <font>
                 <Font name="Agency FB" size="76.0" />
             </font>
@@ -31,6 +32,7 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
+            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartButton" text="Restart" />
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -40,13 +42,13 @@
    <left>
       <VBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
+            <ComboBox fx:id="foodChoiceBox" onAction="#placeFood" prefWidth="150.0" promptText="Place food" />
+            <Button mnemonicParsing="false" onAction="#placeMould" text="Place Mould" />
                 <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateManager" prefHeight="54.0" prefWidth="138.0" text="Expand" textAlignment="CENTER">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Button>
-            <ComboBox fx:id="foodChoiceBox" onAction="#placeFood" prefWidth="150.0" promptText="Place food" />
-            <Button mnemonicParsing="false" onAction="#placeMould" text="Place Logic.Mould" />
          </children>
          <BorderPane.margin>
             <Insets />
@@ -56,7 +58,11 @@
          </padding>
       </VBox>
    </left>
+   <effect>
+      <Blend />
+   </effect>
    <center>
-      <Pane fx:id="pane" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="pane" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      </Pane>
    </center>
 </BorderPane>

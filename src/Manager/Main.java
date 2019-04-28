@@ -24,59 +24,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("manager.fxml"));
         primaryStage.setTitle(WINDOW_TITLE);
         primaryStage.setScene(new Scene(root));
-//        primaryStage.sizeToScene();
         primaryStage.show();
-//        primaryStage.setMinWidth(primaryStage.getWidth());
-//        primaryStage.setMinHeight(primaryStage.getHeight());
-//
-//        this.stage = primaryStage;
-//
-//        Parent root = FXMLLoader.load(getClass().getResource("SlimeMouldApp.fxml"));
-//        primaryStage.setTitle("Hello world");
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.show();
-////
-//
-//        window = primaryStage;
-//        window.setTitle(PROJECT_NAME);
-//        window.setOnCloseRequest(e -> {
-//            e.consume();
-//            closeProgram();
-//        });
-//        HBox topMenu = new HBox();
-//        Button buttonA = new Button("File");
-//        Button buttonB = new Button("Edit");
-//        Button buttonC = new Button("View");
-//        topMenu.getChildren().addAll(buttonA, buttonB, buttonC);
-//
-//        VBox leftMenu = new VBox();
-//        Button buttonD = new Button("CHANGE STYLE");
-////        buttonD.setOnAction(e->{
-////            scene2.getStylesheets().add("./SlimeMouldApp/Viper.css");
-////        });
-//
-//        Button buttonE = new Button("E");
-//        Button buttonF = new Button("F");
-//        leftMenu.getChildren().addAll(buttonD, buttonE, buttonF);
-//
-//        Button exitButton = new Button("Exit");
-//        exitButton.setOnAction(e -> closeProgram());
-//        // layout 2
-//        StackPane bottomMenu = new StackPane();
-//        bottomMenu.getChildren().add(exitButton);
-//
-//
-//        BorderPane borderPane = new BorderPane();
-//        borderPane.setTop(topMenu);
-//        borderPane.setLeft(leftMenu);
-//        borderPane.setBottom(bottomMenu);
-//
-//        scene2 = new Scene(borderPane, 600, 300);
-//
-//
-//        window.setScene(scene2);
-//        window.setTitle(PROJECT_NAME);
-//        window.show();
+
     }
 
     void closeProgram() {
@@ -86,7 +35,7 @@ public class Main extends Application {
             System.out.println("File is saved!");
             window.close();
         }
-    }       
+    }
 
     public static void main(String[] args) {
         launch(args);
