@@ -27,12 +27,15 @@
    <right>
       <VBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#closeProgram" prefHeight="54.0" prefWidth="138.0" text="Exit" textAlignment="CENTER">
+                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#closeProgram" prefHeight="50.0" prefWidth="150.0" text="Exit" textAlignment="CENTER">
                     <font>
-                        <Font size="18.0" />
+                        <Font name="Arial" size="18.0" />
                     </font>
                 </Button>
-            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartButton" text="Restart" />
+            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartButton" prefHeight="50.0" prefWidth="150.0" text="Restart">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Button>
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

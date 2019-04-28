@@ -2,11 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/AStar$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/AStar$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/AStar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/AStar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/Element.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/Element.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Logic/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Manager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Manager/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Manager/SlimeManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Manager/SlimeManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Manager/SlimeMouldException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Manager/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MID_67690_AI_AS_TOOL_HUJI/Manager/manager.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/AStar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/AStar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Element.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Empty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Food.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Mould.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Mould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager/SlimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/SlimeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager/SlimeMouldException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/manager.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager/managerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/managerController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,134 +84,91 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/Mould.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="18" column="30" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="212">
+              <caret line="62" column="80" selection-start-line="62" selection-start-column="80" selection-end-line="62" selection-end-column="80" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1731#1732#0" expanded="true" />
-                <element signature="e#1763#1764#0" expanded="true" />
-                <element signature="e#3659#3660#0" expanded="true" />
-                <element signature="e#3694#3695#0" expanded="true" />
-                <element signature="e#4592#4593#0" expanded="true" />
-                <element signature="e#4627#4628#0" expanded="true" />
+                <element signature="docComment;class#Mould#0" />
+                <element signature="docComment;field#RIGHT_MOVE#0;class#Mould#0" />
+                <element signature="docComment;field#MOULD_COLOR#0;class#Mould#0" />
+                <element signature="docComment;field#mouldHead#0;class#Mould#0" />
+                <element signature="docComment;field#hasFoundFood#0;class#Mould#0" />
+                <element signature="method#Mould#0;class#Mould#0" />
+                <element signature="docComment;method#getMouldHead#0;class#Mould#0" />
+                <element signature="method#restart#0;class#Mould#0" />
+                <element signature="docComment;method#didFindFood#0;class#Mould#0" />
+                <element signature="docComment;method#setFoundFood#0;class#Mould#0" />
+                <element signature="docComment;method#setType#0;class#Mould#0" />
+                <element signature="docComment;method#setRepr#0;class#Mould#0" />
+                <element signature="method#setRepr#0;class#Mould#0" />
+                <element signature="docComment;method#generateXMove#0;class#Mould#0" />
+                <element signature="method#generateXMove#0;class#Mould#0" />
+                <element signature="docComment;method#generateYMove#0;class#Mould#0" />
+                <element signature="method#generateYMove#0;class#Mould#0" />
+                <element signature="docComment;method#isLeftOfHead#0;class#Mould#0" />
+                <element signature="method#isLeftOfHead#0;class#Mould#0" />
+                <element signature="docComment;method#isBelowHead#0;class#Mould#0" />
+                <element signature="method#isBelowHead#0;class#Mould#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Logic/Element.java">
+        <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="73" column="28" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
+            <state relative-caret-position="268">
+              <caret line="182" column="30" selection-start-line="182" selection-start-column="30" selection-end-line="182" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1574#1662#0" expanded="true" />
+                <element signature="e#1661#1662#0" expanded="true" />
+                <element signature="e#2094#2095#0" expanded="true" />
+                <element signature="e#2144#2145#0" expanded="true" />
+                <element signature="e#6822#6823#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Manager/Main.java">
+        <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/animation/AnimationTimer.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2938#2939#0" expanded="true" />
-                <element signature="e#2966#2967#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="253">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Logic/AStar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/Photos/mould1.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Manager/SlimeMouldException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-              <folding>
-                <element signature="e#111#112#0" expanded="true" />
-                <element signature="e#135#136#0" expanded="true" />
-                <element signature="e#181#182#0" expanded="true" />
-                <element signature="e#207#208#0" expanded="true" />
-                <element signature="e#255#256#0" expanded="true" />
-                <element signature="e#282#283#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/Photos/mould3.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Photos/mould2.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="67" column="91" selection-start-line="67" selection-start-column="91" selection-end-line="67" selection-end-column="91" />
+            <state relative-caret-position="157">
+              <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Logic/Food.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-              <folding>
-                <element signature="e#271#272#0" expanded="true" />
-                <element signature="e#304#305#0" expanded="true" />
-                <element signature="e#702#703#0" expanded="true" />
-                <element signature="e#736#737#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Manager/managerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="225" column="35" selection-start-line="225" selection-start-column="35" selection-end-line="225" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1605#1723#0" expanded="true" />
-                <element signature="e#1722#1723#0" expanded="true" />
-                <element signature="e#2094#2095#0" expanded="true" />
-                <element signature="e#2144#2145#0" expanded="true" />
-                <element signature="e#8204#8205#0" expanded="true" />
-                <element signature="e#8249#8250#0" expanded="true" />
-                <element signature="e#8329#8330#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -216,10 +188,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lace</find>
-      <find>sleep</find>
-      <find>sl</find>
-      <find>worldPane</find>
       <find>mouldHea</find>
       <find>upda</find>
       <find>darke</find>
@@ -236,7 +204,6 @@
       <find>Main</find>
       <find>sat</find>
       <find>rest</find>
-      <find>update</find>
       <find>des</find>
       <find>eat</find>
       <find>satura</find>
@@ -244,8 +211,13 @@
       <find>mouldHead</find>
       <find>did</find>
       <find>OPA</find>
-      <find>satu</find>
       <find>de</find>
+      <find>update</find>
+      <find>satu</find>
+      <find>system</find>
+      <find>head</find>
+      <find>canBe</find>
+      <find>satur</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -259,8 +231,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/Point.java" />
         <option value="$PROJECT_DIR$/src/sample/MouldManager.java" />
         <option value="$PROJECT_DIR$/src/sample/World.java" />
@@ -301,15 +271,17 @@
         <option value="$PROJECT_DIR$/src/UI.java" />
         <option value="$PROJECT_DIR$/src/SlimeMouldException.java" />
         <option value="$PROJECT_DIR$/src/module-info.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Node.java" />
+        <option value="$PROJECT_DIR$/src/Logic/AStar.java" />
+        <option value="$PROJECT_DIR$/src/Manager/Main.java" />
         <option value="$PROJECT_DIR$/src/Manager/SlimeMouldException.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Food.java" />
         <option value="$PROJECT_DIR$/src/Manager/manager.fxml" />
         <option value="$PROJECT_DIR$/src/Manager/managerController.java" />
-        <option value="$PROJECT_DIR$/src/Manager/Main.java" />
         <option value="$PROJECT_DIR$/src/Logic/Empty.java" />
-        <option value="$PROJECT_DIR$/src/Logic/Food.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Element.java" />
         <option value="$PROJECT_DIR$/src/Logic/Mould.java" />
         <option value="$PROJECT_DIR$/src/Manager/SlimeManager.java" />
-        <option value="$PROJECT_DIR$/src/Logic/Element.java" />
       </list>
     </option>
   </component>
@@ -320,9 +292,9 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="757" />
-    <option name="width" value="1170" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="631" />
+    <option name="width" value="1298" />
     <option name="height" value="1088" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -361,6 +333,12 @@
               <item name="MID_67690_AI_AS_TOOL_HUJI" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Manager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MID_67690_AI_AS_TOOL_HUJI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MID_67690_AI_AS_TOOL_HUJI" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Photos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MID_67690_AI_AS_TOOL_HUJI" type="b2602c69:ProjectViewProjectNode" />
@@ -507,24 +485,24 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127930000" />
+    <option name="totallyTimeSpent" value="133674000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="505" y="0" width="1038" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Image Layers" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
-      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.13825503" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.030674847" />
       <window_info id="Learn" order="5" />
       <window_info id="Structure" order="6" weight="0.24965326" />
       <window_info id="Favorites" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32791328" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21715818" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39812332" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31436315" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39701897" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -637,27 +615,51 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Logic/AStar.java</url>
-          <line>70</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Logic/AStar.java</url>
-          <line>107</line>
-          <properties />
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Logic/AStar.java</url>
           <line>111</line>
           <properties />
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Manager/Main.java</url>
-          <line>35</line>
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>118</line>
           <properties />
-          <option name="timeStamp" value="60" />
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>120</line>
+          <properties />
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>121</line>
+          <properties />
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>124</line>
+          <properties />
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>162</line>
+          <properties />
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>176</line>
+          <properties />
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>183</line>
+          <properties />
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -673,24 +675,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/ex2_oop/Ex2 supplied material-20180412/SpaceShip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1046">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/sub2_oop/src/SpaceWars.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="52" column="7" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/AlertBox.java" />
     <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/ex2_oop/Ex2 supplied material-20180412/SpaceShipFactory.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -936,16 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/NodeMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -953,13 +927,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module-info.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -995,117 +962,205 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
+    <entry file="file://$PROJECT_DIR$/src/Logic/Node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="67" column="91" selection-start-line="67" selection-start-column="91" selection-end-line="67" selection-end-column="91" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Manager/SlimeMouldException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="52">
+          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
           <folding>
-            <element signature="e#111#112#0" expanded="true" />
-            <element signature="e#135#136#0" expanded="true" />
-            <element signature="e#181#182#0" expanded="true" />
-            <element signature="e#207#208#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Manager/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2938#2939#0" expanded="true" />
-            <element signature="e#2966#2967#0" expanded="true" />
+            <element signature="docComment;class#Node#0" />
+            <element signature="docComment;method#Node#0;class#Node#0" />
+            <element signature="method#Node#0;class#Node#0" />
+            <element signature="docComment;method#addNeighbor#0;class#Node#0" />
+            <element signature="method#addNeighbor#0;class#Node#0" />
+            <element signature="e#536#584#1" />
+            <element signature="docComment;method#getManhattanTo#0;class#Node#0" />
+            <element signature="method#getManhattanTo#0;class#Node#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/AStar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
+        <state relative-caret-position="360">
+          <caret line="45" column="58" selection-start-line="45" selection-start-column="58" selection-end-line="45" selection-end-column="58" />
+          <folding>
+            <element signature="docComment;class#AStar#0" />
+            <element signature="e#107#141#0" />
+            <element signature="e#177#201#0" />
+            <element signature="e#224#247#0" />
+            <element signature="e#269#293#0" />
+            <element signature="e#329#351#0" />
+            <element signature="e#391#429#0" />
+            <element signature="e#470#499#0" />
+            <element signature="e#540#569#0" />
+            <element signature="e#611#689#0" />
+            <element signature="e#611#1746#0" />
+            <element signature="e#765#800#1" />
+            <element signature="class#1022:1165" />
+            <element signature="e#1171#1240#0" />
+            <element signature="e#1535#1624#0" />
+            <element signature="e#1759#1820#0" />
+            <element signature="e#1759#1912#0" />
+            <element signature="e#1909#1973#0" />
+            <element signature="e#1909#3196#0" />
+            <element signature="e#2257#3159#1" />
+            <element signature="e#2390#2426#1" />
+            <element signature="e#2472#3155#1" />
+            <element signature="e#2566#2588#1" />
+            <element signature="e#2750#2843#1" />
+            <element signature="e#2889#2970#1" />
+            <element signature="e#3266#3327#0" />
+            <element signature="e#3266#3541#0" />
+            <element signature="e#3464#3523#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Manager/SlimeMouldException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Food.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="docComment;class#Food#0" />
+            <element signature="docComment;method#setRepr#0;class#Food#0" />
+            <element signature="method#setRepr#0;class#Food#0" />
+            <element signature="docComment;method#setType#0;class#Food#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Manager/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="docComment;class#Main#0" />
+            <element signature="docComment;method#main#0;class#Main#0" />
+            <element signature="docComment;method#start#0;class#Main#0" />
+            <element signature="method#start#0;class#Main#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Manager/managerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="98" column="48" selection-start-line="98" selection-start-column="48" selection-end-line="98" selection-end-column="48" />
+        <state relative-caret-position="102">
+          <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Food.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould1.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-          <folding>
-            <element signature="e#271#272#0" expanded="true" />
-            <element signature="e#304#305#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#736#737#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
+    <entry file="file://$PROJECT_DIR$/src/Logic/Element.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="225" column="35" selection-start-line="225" selection-start-column="35" selection-end-line="225" selection-end-column="35" />
+        <state relative-caret-position="272">
+          <caret line="108" column="53" lean-forward="true" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1605#1723#0" expanded="true" />
-            <element signature="e#1722#1723#0" expanded="true" />
-            <element signature="e#2094#2095#0" expanded="true" />
-            <element signature="e#2144#2145#0" expanded="true" />
-            <element signature="e#8204#8205#0" expanded="true" />
-            <element signature="e#8249#8250#0" expanded="true" />
-            <element signature="e#8329#8330#0" expanded="true" />
+            <element signature="docComment;class#Element#0" />
+            <element signature="docComment;field#EMPTY_TYPE#0;class#Element#0" />
+            <element signature="docComment;field#_xPos#0;class#Element#0" />
+            <element signature="docComment;field#_yPos#0;class#Element#0" />
+            <element signature="docComment;field#_type#0;class#Element#0" />
+            <element signature="docComment;field#_elementRepr#0;class#Element#0" />
+            <element signature="docComment;method#Element#0;class#Element#0" />
+            <element signature="method#Element#0;class#Element#0" />
+            <element signature="docComment;method#getElementRepr#0;class#Element#0" />
+            <element signature="docComment;method#setReprDim#0;class#Element#0" />
+            <element signature="method#setReprDim#0;class#Element#0" />
+            <element signature="docComment;method#setRepr#0;class#Element#0" />
+            <element signature="docComment;method#setType#0;class#Element#0" />
+            <element signature="docComment;method#getType#0;class#Element#0" />
+            <element signature="docComment;method#getXPos#0;class#Element#0" />
+            <element signature="docComment;method#getYPos#0;class#Element#0" />
+            <element signature="docComment;method#saturate#0;class#Element#0" />
+            <element signature="docComment;method#desaturate#0;class#Element#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Mould.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="30" />
+        <state relative-caret-position="212">
+          <caret line="62" column="80" selection-start-line="62" selection-start-column="80" selection-end-line="62" selection-end-column="80" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1731#1732#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-            <element signature="e#3659#3660#0" expanded="true" />
-            <element signature="e#3694#3695#0" expanded="true" />
-            <element signature="e#4592#4593#0" expanded="true" />
-            <element signature="e#4627#4628#0" expanded="true" />
+            <element signature="docComment;class#Mould#0" />
+            <element signature="docComment;field#RIGHT_MOVE#0;class#Mould#0" />
+            <element signature="docComment;field#MOULD_COLOR#0;class#Mould#0" />
+            <element signature="docComment;field#mouldHead#0;class#Mould#0" />
+            <element signature="docComment;field#hasFoundFood#0;class#Mould#0" />
+            <element signature="method#Mould#0;class#Mould#0" />
+            <element signature="docComment;method#getMouldHead#0;class#Mould#0" />
+            <element signature="method#restart#0;class#Mould#0" />
+            <element signature="docComment;method#didFindFood#0;class#Mould#0" />
+            <element signature="docComment;method#setFoundFood#0;class#Mould#0" />
+            <element signature="docComment;method#setType#0;class#Mould#0" />
+            <element signature="docComment;method#setRepr#0;class#Mould#0" />
+            <element signature="method#setRepr#0;class#Mould#0" />
+            <element signature="docComment;method#generateXMove#0;class#Mould#0" />
+            <element signature="method#generateXMove#0;class#Mould#0" />
+            <element signature="docComment;method#generateYMove#0;class#Mould#0" />
+            <element signature="method#generateYMove#0;class#Mould#0" />
+            <element signature="docComment;method#isLeftOfHead#0;class#Mould#0" />
+            <element signature="method#isLeftOfHead#0;class#Mould#0" />
+            <element signature="docComment;method#isBelowHead#0;class#Mould#0" />
+            <element signature="method#isBelowHead#0;class#Mould#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Element.java">
+    <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/animation/AnimationTimer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="73" column="28" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
+        <state relative-caret-position="253">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="182" column="30" selection-start-line="182" selection-start-column="30" selection-end-line="182" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1574#1662#0" expanded="true" />
+            <element signature="e#1661#1662#0" expanded="true" />
+            <element signature="e#2094#2095#0" expanded="true" />
+            <element signature="e#2144#2145#0" expanded="true" />
+            <element signature="e#6822#6823#0" expanded="true" />
           </folding>
         </state>
       </provider>

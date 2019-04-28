@@ -99,7 +99,7 @@ public class SlimeManager {
 	 *
 	 * @param logMsg msg to be logged.
 	 */
-	private void log(String logMsg) {
+	public static void log(String logMsg) {
 		System.out.println("Log: " + logMsg);
 	}
 
@@ -107,7 +107,7 @@ public class SlimeManager {
 	 * Updates the timer and thus the program.
 	 */
 	public void update() {
-		System.out.println("Updated.");
+		log("Updated");
 		timer.start();
 	}
 
@@ -128,56 +128,27 @@ public class SlimeManager {
 	}
 
 	/**
-	 * Goes over all moulds and normalizes them (energy-wise).
+	 *
 	 */
-	private void reenergizeMoulds() {
-		for (int x = 0; x < X_TILES; x++) {
-			for (int y = 0; y < Y_TILES; y++) {
-				Element currElem = worldGrid[x][y];
-				if (currElem.getType() == MOULD_TYPE) {
-					currElem.desaturate();
-					if (((Color) currElem.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {
-						replace(new Empty(x, y));
-					}
-				}
-			}
-		}
-	}
-
 	private void getFood() {
 		Mould currMould = Mould.getMouldHead();
+		/**
+		 * If food was found, go and find some more
+		 */
 		if (currAStarPath == null || currAStarPath.size() == 0) {
 			AStar astar = new AStar(nodePool, nodePool.getNode(currMould._xPos, currMould._yPos),
 					foodFound);
 			currAStarPath = astar.search();
 		}
-
+		// Get next node from A*s path.
 		Node currNode = currAStarPath.pop();
 		Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
-		// Choose how to act according to the chosen neighbor.
-		switch (currNeighbor.getType()) {
-			case EMPTY_TYPE:
-				spreadTo(currMould, currNeighbor);
-//                        didSpread = true;
-				break;
-			case FOOD_TYPE:
-				eatFood(currMould, (Food) currNeighbor);
-				foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
-//                        didSpread = true;
-				break;
-			case MOULD_TYPE:
-				currMould = (Mould) currNeighbor;
-				currMould.saturate();
-				if (canBeHead(currMould)) {
-					Mould.setMouldHead(currMould);
-				}
-				break;
-		}
+		spreadTo(currNeighbor);
 	}
 
 	private boolean canBeHead(Mould potential) {
 		Color color = (Color) potential.getElementRepr().getFill();
-		return color.getBrightness()>0.9 && color.getOpacity()>0.7;
+		return color.getBrightness() > 0.9 && color.getOpacity() > 0.7;
 	}
 
 	private void searchForFood() {
@@ -197,44 +168,57 @@ public class SlimeManager {
 			xPos = currMould.getXPos();
 			yPos = currMould.getYPos();
 			if ((xMove * yMove != 0) || (Math.abs(xMove) + Math.abs(yMove) == 0)) {
-				System.err.println("No such thing!");
+				log("No such thing!");
 			}
 			// TODO: The code below can enter an endless loop when no available tile exists?
 			newX = ((xPos + xMove >= 0) && (xPos + xMove <= X_TILES - 1)) ? xPos + xMove : -1;
 			newY = ((yPos + yMove >= 0) && (yPos + yMove <= Y_TILES - 1)) ? yPos + yMove : -1;
 			currNeighbor = ((newX < 0) || (newY < 0)) ? null : worldGrid[newX][newY];
-
 			if (currNeighbor == null) {
-//                System.out.println("Everything's null!");       // TODO: DEBUG only
 				didSpread = true;
 				continue;
-			}
+			} else if (currNeighbor.getType() != MOULD_TYPE) {
+				didSpread = true;
+			} else {
 
-			// Choose how to act according to the chosen neighbor.
-			switch (currNeighbor.getType()) {
-				case EMPTY_TYPE:
-					spreadTo(currMould, currNeighbor);
-					didSpread = true;
-					break;
-				case FOOD_TYPE:
-					eatFood(currMould, (Food) currNeighbor);
-					foodFound = nodePool.getNode(currNeighbor._xPos, currNeighbor._yPos);
-					didSpread = true;
-					break;
-				case MOULD_TYPE:
-					currMould = (Mould) currNeighbor;
-					currMould.saturate();
-					if (((Color) currMould.getElementRepr().getFill()).getBrightness() > 0.9) {
-						Mould.setMouldHead(currMould);
-					}
-					break;
+				currMould = (Mould) currNeighbor;
 			}
+			spreadTo(currNeighbor);
 		} while (!didSpread);
 	}
 
-	public void eatFood(Mould currMould, Food currFood) {
+	private void spreadTo(Element toSpread) {
+		// Choose how to act according to the chosen neighbor.
+		switch (toSpread.getType()) {
+			case EMPTY_TYPE:
+				spreadToEmpty(toSpread);
+				break;
+			case FOOD_TYPE:
+				eatFood((Food) toSpread);
+				foodFound = nodePool.getNode(toSpread._xPos, toSpread._yPos);
+				break;
+			case MOULD_TYPE:
+				spreadToMould((Mould) toSpread);
+				break;
+		}
+	}
+
+	/**
+	 * Expands
+	 */
+	private void spreadToMould(Mould mould) {
+		mould.saturate();
+		if (((Color) mould.getElementRepr().getFill()).getOpacity() > 0.8) {
+			Mould.setMouldHead(mould);
+		}
+	}
+
+	/**
+	 * Eats given food found.
+	 */
+	public void eatFood(Food currFood) {
 		// TODO: Manage energy consumption
-		spreadTo(currMould, currFood);
+		spreadToEmpty(currFood);
 		currFood.desaturate();
 		if (((Color) currFood.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {
 			replace(new Mould(currFood._xPos, currFood._yPos));
@@ -242,19 +226,11 @@ public class SlimeManager {
 		}
 	}
 
-	public void spreadTo(Mould currMould, Element currNeighbor) {
+	public void spreadToEmpty(Element currNeighbor) {
 		int xPos = currNeighbor.getXPos();
 		int yPos = currNeighbor.getYPos();
 		Mould toSpread = new Mould(xPos, yPos);
-		place(toSpread);
-	}
-
-	public void drawElements() {
-		for (int x = 0; x < X_TILES; x++) {
-			for (int y = 0; y < Y_TILES; y++) {
-				worldPane.getChildren().add(worldGrid[x][y].getElementRepr());
-			}
-		}
+		place(toSpread);    // TODO: replace instead of place?
 	}
 
 	/**
@@ -309,37 +285,27 @@ public class SlimeManager {
 		place(new Mould(randX, randY));
 	}
 
-	/**
-	 * Populate world with all needed elements.
-	 */
-	public void populateWorld() {
-		System.out.println("Populating world");
-		worldPane.setPrefSize(W, H);
-		populateElements();
-		populateFood();
-		placeMould();
-	}
-
 	// Helpers //
-
-	/**
-	 * Adds food to world.
-	 *
-	 * @param xPos x pos of food.
-	 * @param yPos y pos of food.
-	 */
-	private void addFood(int xPos, int yPos) {
-		worldGrid[xPos][yPos] = new Food(xPos, yPos);
-	}
 
 	public void restart() {
 		timer.stop();
 	}
 
 	/**
-	 * Starts the show.
+	 * Goes over all moulds and normalizes them (energy-wise).
 	 */
-	public void start() {
-		populateElements();
+	private void reenergizeMoulds() {
+		for (int x = 0; x < X_TILES; x++) {
+			for (int y = 0; y < Y_TILES; y++) {
+				Element currElem = worldGrid[x][y];
+				if (currElem.getType() == MOULD_TYPE) {
+					currElem.desaturate();
+					// If current elements reaches a minimal threshold opacity, it should disappear.
+					if (((Color) currElem.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {
+						replace(new Empty(x, y));
+					}
+				}
+			}
+		}
 	}
 }

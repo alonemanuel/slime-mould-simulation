@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 
 public class Empty extends Element {
 
-    public static final Color EMPTY_COLOR = Color.LIGHTGRAY;
+    public static final Color EMPTY_COLOR = Color.BLACK;
 
     public Empty(int xPos, int yPos) {
         super(xPos, yPos);

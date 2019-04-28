@@ -49,21 +49,10 @@ public class managerController implements Initializable {
         }
     }
 
-    public void handleButtonClick() {
-        System.out.println("You just clicked me.");
-        button1.setText("Stop touchin me");
-    }
-
-//    private static void closeProgram() {
-//        boolean answer = ExitMenu.display("Exit Menu", "Sure you want to exit?");
-//        if (answer) {
-//            startWindow.close();
-//        }
-//    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Loading user data...");
+        SlimeManager.log("Loading user data");
         manager = new SlimeManager(pane);
         foodChoiceBox.setItems(foodChoiceList);
         manager.populateElements();
