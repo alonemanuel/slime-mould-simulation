@@ -1,11 +1,8 @@
 package Logic;// Imports //
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 import java.util.Random;
-
-import static Manager.SlimeManager.REPR_SIZE;
 
 /**
  * A class representing a mould element.
@@ -67,6 +64,11 @@ public class Mould extends Element {
         return mouldHead;
     }
 
+    public static void restart() {
+        mouldHead = null;
+        hasFoundFood = false;
+    }
+
     /**
      * set type of element.
      */
@@ -80,16 +82,7 @@ public class Mould extends Element {
      */
     @Override
     public void setRepr() {
-//        _elementRepr = new Circle();
-//        _elementRepr.setTranslateX(_xPos * REPR_SIZE);
-//        _elementRepr.setTranslateY(_yPos * REPR_SIZE);
-//        ((Circle) _elementRepr).setRadius(REPR_SIZE / 2);
-//        _elementRepr.setFill(MOULD_COLOR);
-        _elementRepr = new Rectangle();
-        _elementRepr.setTranslateX(_xPos * REPR_SIZE);
-        _elementRepr.setTranslateY(_yPos * REPR_SIZE);
-        ((Rectangle) _elementRepr).setHeight(REPR_SIZE);
-        ((Rectangle) _elementRepr).setWidth(REPR_SIZE);
+        setReprDim();
         _elementRepr.setFill(MOULD_COLOR);
         _elementRepr.setStroke(MOULD_COLOR);
     }
@@ -112,7 +105,6 @@ public class Mould extends Element {
         return randPicker ? 0 : yMove;
     }
 
-
     /**
      * Gives energy to given mould.
      *
@@ -128,15 +120,15 @@ public class Mould extends Element {
     /**
      * @return true iff mould has found food.
      */
-    public boolean didFindFood() {
+    public static boolean didFindFood() {
         return hasFoundFood;
     }
 
     /**
      * Sets the hasFoundFood field to true.
      */
-    public void setFoundFood() {
-        hasFoundFood = true;
+    public static void setFoundFood(boolean didFind) {
+        hasFoundFood = didFind;
     }
 
     /**
@@ -185,20 +177,8 @@ public class Mould extends Element {
         return (_yPos == mouldHead.getYPos()) ? rand.nextBoolean() : _yPos > mouldHead.getYPos();
     }
 
-
-    public void saturate() {
-        Color color = (Color) _elementRepr.getFill();
-        _elementRepr.setFill(color.deriveColor(0, 1, 0.95, 1));
-        _elementRepr.setStroke(color.deriveColor(0, 1, 0.95, 1));
-        if (((Color) _elementRepr.getFill()).getBrightness() > 0.9) {
-            mouldHead = this;
-        }
-        //        _elementRepr.setFill(Color.hsb(color.getHue(), Math.sqrt(color.getSaturation()), Math.pow(color.getBrightness(), 2)));
-//        _elementRepr.setFill(Color.BLACK);
+    public static void setMouldHead(Mould tobeHead) {
+        mouldHead = tobeHead;
     }
 
-    public static void restart() {
-        mouldHead = null;
-        hasFoundFood = false;
-    }
 }

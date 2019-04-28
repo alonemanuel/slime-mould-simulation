@@ -1,9 +1,6 @@
 package Logic;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-
-import static Manager.SlimeManager.REPR_SIZE;
 
 public class Empty extends Element {
 
@@ -15,11 +12,7 @@ public class Empty extends Element {
 
     @Override
     public void setRepr() {
-        _elementRepr = new Rectangle();
-        _elementRepr.setTranslateX(_xPos * REPR_SIZE );
-        _elementRepr.setTranslateY(_yPos * REPR_SIZE);
-        ((Rectangle) _elementRepr).setHeight(REPR_SIZE);
-        ((Rectangle) _elementRepr).setWidth(REPR_SIZE);
+        setReprDim();
         _elementRepr.setFill(EMPTY_COLOR);
         _elementRepr.setStroke(EMPTY_COLOR);
     }
