@@ -28,7 +28,6 @@ public class Mould extends Element {
 	/**
 	 * The head of the entire mould.
 	 */
-	private static Mould mouldHead;
 	/**
 	 * True iff the mould has encountered food.
 	 */
@@ -48,27 +47,16 @@ public class Mould extends Element {
 	public Mould(int xPos, int yPos) {
 		super(xPos, yPos);
 		// Inits the mould head to be the first created mould.
-		if (mouldHead == null) {
-			mouldHead = this;
 			hasFoundFood = false;
-		}
 		timesPast = 1;
 	}
 
 	/**
 	 * @return mould head.
 	 */
-	public static Mould getMouldHead() {
-		return mouldHead;
-	}
 
-	public static void setMouldHead(Mould tobeHead) {
-		mouldHead = tobeHead;
-		log("Set mould head to x:" + tobeHead._xPos + ", y: " + tobeHead._yPos);
-	}
 
 	public static void restart() {
-		mouldHead = null;
 		hasFoundFood = false;
 	}
 
@@ -108,8 +96,8 @@ public class Mould extends Element {
 	 * @param randPicker predefined random picker.
 	 * @return generated x move.
 	 */
-	public int generateXMove(boolean randPicker) {
-		int xMove = isLeftOfHead() ? LEFT_MOVE : RIGHT_MOVE;
+	public int generateXMove(boolean randPicker, Mould head) {
+		int xMove = isLeftOfHead(head) ? LEFT_MOVE : RIGHT_MOVE;
 		return randPicker ? xMove : 0;
 	}
 
@@ -117,24 +105,24 @@ public class Mould extends Element {
 	 * @param randPicker predefined random picker.
 	 * @return generated y move.
 	 */
-	public int generateYMove(boolean randPicker) {
-		int yMove = isBelowHead() ? DOWN_MOVE : UP_MOVE;
+	public int generateYMove(boolean randPicker, Mould head) {
+		int yMove = isBelowHead(head) ? DOWN_MOVE : UP_MOVE;
 		return randPicker ? 0 : yMove;
 	}
 
 	/**
 	 * @return true if mould is left of headMould, random if mould is headMould.
 	 */
-	private boolean isLeftOfHead() {
+	private boolean isLeftOfHead(Mould head) {
 		Random rand = new Random();
-		return (_xPos == mouldHead.getXPos()) ? rand.nextBoolean() : _xPos < mouldHead.getXPos();
+		return (_xPos == head.getXPos()) ? rand.nextBoolean() : _xPos < head.getXPos();
 	}
 
 	/**
 	 * @return true if mould is below headMould, random if mould is headMould.
 	 */
-	private boolean isBelowHead() {
+	private boolean isBelowHead(Mould head) {
 		Random rand = new Random();
-		return (_yPos == mouldHead.getYPos()) ? rand.nextBoolean() : _yPos > mouldHead.getYPos();
+		return (_yPos == head.getYPos()) ? rand.nextBoolean() : _yPos > head.getYPos();
 	}
 }

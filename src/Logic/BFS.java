@@ -2,11 +2,7 @@ package Logic;
 
 import java.util.*;
 
-/**
- * Class representing an A* algorithm.
- */
-public class AStar {
-
+public class BFS {
 	/**
 	 * Node pool to work on.
 	 */
@@ -42,16 +38,22 @@ public class AStar {
 	private HashMap<Node, Double> fScore;
 	private boolean isExpanding;
 
-	/**
-	 * Constructor.
-	 */
-	public AStar(Element[][] worldGrid, NodeMap nodePool, Node start, Node goal, boolean isExpanding) {
+	private LinkedList<Node> S;
+	private HashSet<Node> discovered;
+	private static int frame;
+
+	public BFS(Element[][] worldGrid, NodeMap nodePool, Node start, Node goal,
+			   boolean isExpanding) {
+
+		S = new LinkedList<>();
+		discovered = new HashSet<>();
+
 		// Avoid time consuming creations of node pools.
-		if (AStar.nodePool == null) {
-			AStar.nodePool = nodePool;
+		if (BFS.nodePool == null) {
+			BFS.nodePool = nodePool;
 		}
-		if (AStar.worldGrid == null) {
-			AStar.worldGrid = worldGrid;
+		if (BFS.worldGrid == null) {
+			BFS.worldGrid = worldGrid;
 		}
 		this.start = start;
 		this.goal = goal;
@@ -78,76 +80,36 @@ public class AStar {
 		// For each node, the total cost of getting from the start node to the goal by passing by
 		// that node. That value is partly known, partly heuristic
 		fScore = nodePool.getNodeMap(Double.POSITIVE_INFINITY);
+		frame++;
 	}
 
-	/**
-	 * Heuristic function.
-	 *
-	 * @return manhattan distance to goal node.
-	 */
-	private double h(Node node) {
-		// TODO: Add infinity to nodes outside of moulds.
-		boolean isMould = worldGrid[node.xPos][node.yPos].getType() == Element.MOULD_TYPE;
-		return isMould ? node.getManhattanTo(goal) : Double.POSITIVE_INFINITY;
-	}
-
-	/**
-	 * Searches for a path from start to goal.
-	 *
-	 * @return best path as a linked list.
-	 */
 	public LinkedList<Node> search() {
-		// Initially, only the start node is know.
-		openSet.add(start);
-
-		// The cost of going from start to start is zero.
-		gScore.put(start, 0.0);
-
-		// For the first node, that value is completely heuristic.
-		fScore.put(start, h(start));
-
-		Node currNode;
-		while (openSet.size() > 0) {
-			// The node in openSet having the lowest f()
-			currNode = openSet.poll();
-			closedSet.add(currNode);
-			if (currNode == goal) {
-				return reconstructPath();
+		LinkedList<Node> alternative = new LinkedList<>();
+		alternative.add(start);
+		S.addFirst(start);
+		discovered.add(start);
+		Random rand = new Random();
+		while (!S.isEmpty()) {
+			Node currNode = S.poll();
+			if (currNode.getManhattanTo(start) > frame) {
+				goal =currNode;
+//				return reconstructPath();
+				return alternative;
 			}
-
 			for (Node neighbor : currNode.neighbors) {
-				// Ignore neighbors which were already evaluated.
-				if (closedSet.contains(neighbor)) {
-					continue;
+				if (!discovered.contains(neighbor)) {
+					discovered.add(neighbor);
+					cameFrom.put(neighbor, currNode);
+					S.addFirst(neighbor);
+//					if (rand.nextBoolean()) {
+//					}
 				}
-
-				// The distance from start to a neighbor
-				double tentGScore = gScore.get(currNode) + 1;
-
-				// Discover a new node
-				if (!openSet.contains(neighbor)) {
-					openSet.add(neighbor);  // TODO: cut contains() time with visited field of node?
-				} else if (tentGScore >= gScore.get(neighbor)) {
-					openSet.remove(neighbor);
-					openSet.add(neighbor);
-					continue;
-				}
-
-				// This path is the best up to now. Record it!
-				cameFrom.put(neighbor, currNode);
-				gScore.put(neighbor, tentGScore);
-				fScore.put(neighbor, tentGScore + h(neighbor));
+				alternative.add(neighbor);
 			}
 		}
-
-		return null; // Never executes
+		return null;
 	}
 
-	/**
-	 * Reconstructs path from cameFrom map.
-	 *
-	 * @return linked list which is the path.
-	 */
 	private LinkedList<Node> reconstructPath() {
 		LinkedList<Node> path = new LinkedList<>();
 		Node curr = goal;

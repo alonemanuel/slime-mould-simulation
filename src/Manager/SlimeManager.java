@@ -7,9 +7,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 
 import static Logic.Element.*;
 
@@ -18,11 +16,12 @@ import static Logic.Element.*;
  */
 public class SlimeManager {
 
-	// Constants //
 	/**
 	 * Size of tile (height == width == size)
 	 */
 	public static final int REPR_SIZE = 10;
+
+	// Constants //
 	/**
 	 * Rate of expansion - how many tiles get covered in a single frame.
 	 */
@@ -51,13 +50,14 @@ public class SlimeManager {
 	 * Below this thresh, moulds disappear.
 	 */
 	private static final double DISAPPEAR_THRESH = 0.001;
-
-	// Fields //
 	/**
 	 * Pool of nodes.
 	 */
 	public NodeMap nodePool;
+
+	// Fields //
 	HashMap<Mould, LinkedList<Node>> headsToAdd;
+	private int frame = 0;
 	/**
 	 * Grid (2D Tile array) representing world.
 	 */
@@ -74,6 +74,12 @@ public class SlimeManager {
 	 * Mould heads.
 	 */
 	private HashMap<Mould, LinkedList<Node>> mouldHeads;
+	private HashSet<Mould> vains;
+	private LinkedList<Mould> edges;
+	private Mould mouldHead;
+	private LinkedList<Mould> edgesToRemove;
+	private LinkedList<Mould> edgesToAdd;
+	private boolean didGetFood = false;
 	/**
 	 * Animation timer of the program.
 	 */
@@ -90,6 +96,11 @@ public class SlimeManager {
 	 * Default ctor.
 	 */
 	public SlimeManager(Pane pane) {
+		vains = new HashSet<>();
+		edges = new LinkedList<>();
+		edgesToRemove = new LinkedList<>();
+		edgesToAdd = new LinkedList<>();
+
 		worldGrid = new Element[X_TILES][Y_TILES];
 		nodePool = new NodeMap(X_TILES, Y_TILES);
 		worldPane = pane;
@@ -116,10 +127,107 @@ public class SlimeManager {
 		timer.start();
 	}
 
+	private void moveSlime() {
+		// Before each movement, reenergize moulds.
+		reenergizeMoulds();
+		// Move according to the expansion rate.
+		for (int i = 0; i < EXPANSION_RATE; i++) {
+			if (edges.isEmpty()) {
+				edges.addFirst(mouldHead);
+			}
+			getFood5();
+			searchForFood5();
+		}
+	}
+
+	private void getFood5() {
+		HashSet<Food> toRemove = new HashSet<>();
+		for (Food food : foodsFound.keySet()) {
+			if (foodsFound.get(food).isEmpty()) {
+				toRemove.add(food);
+			} else {
+			// Get next node from A*s path.
+			Node currNode = foodsFound.get(food).pop();
+			Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
+			spreadTo(currNeighbor);  // TODO: Should be spawnTO?
+				vains.add((Mould) currNeighbor);
+			}
+		}
+		foodsFound.keySet().removeAll(toRemove);
+	}
+
+	private void searchForFood5() {
+		edgesToRemove.clear();
+		edgesToAdd.clear();
+		for (Mould edge : edges) {
+			for (int i = 0; i < 3; i++) {
+
+			expandEdge(edge);
+			}
+		}
+		edges.removeAll(edgesToRemove);
+		edges.addAll(edgesToAdd);
+	}
+
+	private void expandEdge(Mould edge) {
+		Random rand = new Random();
+		int xMove, newX, xPos;
+		int yMove, newY, yPos;
+		Mould currMould = edge;
+		Element currNeighbor;
+		// Generate the X and Y positions for the next move. Logic.Mould will try and move away from the head.
+		boolean randPicker = rand.nextBoolean();
+		xMove = currMould.generateXMove(randPicker, edge);
+		yMove = currMould.generateYMove(randPicker, edge);
+
+		// Get the actual neighbor from the grid of tiles.
+		xPos = currMould.getXPos();
+		yPos = currMould.getYPos();
+		// TODO: The code below can enter an endless loop when no available tile exists?
+		newX = ((xPos + xMove >= 0) && (xPos + xMove <= X_TILES - 1)) ? xPos + xMove : -1;
+		newY = ((yPos + yMove >= 0) && (yPos + yMove <= Y_TILES - 1)) ? yPos + yMove : -1;
+		currNeighbor = ((newX < 0) || (newY < 0)) ? null : worldGrid[newX][newY];
+		edgesToRemove.add(edge);
+		if (currNeighbor == null) {
+			return;
+		}
+		switch (currNeighbor.getType()) {
+			case MOULD_TYPE:
+				return;
+			case EMPTY_TYPE:
+				Mould spawned = spawnTo(currNeighbor);
+				edgesToAdd.add(spawned);
+				return;
+			case FOOD_TYPE:
+				edgeEatFood((Food) currNeighbor);
+				return;
+		}
+	}
+
+	private Mould spawnTo(Element toSpawnTo) {
+		int xPos = toSpawnTo.getXPos();
+		int yPos = toSpawnTo.getYPos();
+		Mould toSpread = new Mould(xPos, yPos);
+		replace(toSpread);    // TODO: replace instead of place?
+		return toSpread;
+	}
+
+	private void edgeEatFood(Food food) {
+		AStar astar = new AStar(worldGrid, nodePool, nodePool.getNode(mouldHead),
+				nodePool.getNode(food), false);
+		foodsFound.put(food, astar.search());
+		// Set food as the new head
+		mouldHead = spawnTo(food);
+		edgesToRemove.addAll(edges);
+		edgesToAdd.add(mouldHead);
+	}
+
+////////////////////////////////////////
+
 	/**
 	 * Moves slime.
 	 */
-	private void moveSlime() {
+	private void moveSlime2() {
 		// Before each movement, reenergize moulds.
 		reenergizeMoulds();
 		// Move according to the expansion rate.
@@ -138,7 +246,7 @@ public class SlimeManager {
 	private void getSpecificFood(Food food) {
 		LinkedList<Node> currAStarPath = foodsFound.get(food);
 		if (currAStarPath == null || currAStarPath.size() == 0) {
-			AStar astar = new AStar(worldGrid, nodePool, nodePool.getNode(Mould.getMouldHead()),
+			AStar astar = new AStar(worldGrid, nodePool, nodePool.getNode(mouldHead),
 					nodePool.getNode(food), false);
 			currAStarPath = astar.search();
 			foodsFound.put(food, currAStarPath);
@@ -151,10 +259,47 @@ public class SlimeManager {
 
 	private void searchForFood() {
 		for (Mould head : mouldHeads.keySet()) {
-			specificExpand(head);
+			specificExpand3(head);
 		}
 		mouldHeads.putAll(headsToAdd);
 		headsToAdd.clear();
+	}
+
+	private void specificExpand2(Mould head) {
+		frame++;
+		LinkedList<Node> closedSet = new LinkedList<>();
+		HashSet<Node> discovered = new HashSet<>();
+		closedSet.addFirst(nodePool.getNode(head));
+		Random rand = new Random();
+		while (!closedSet.isEmpty()) {
+			Node currNode = closedSet.poll();
+			if (currNode.getManhattanTo(nodePool.getNode(head)) > frame) {
+				return;
+			}
+			for (Node neighbor : currNode.neighbors) {
+				if (!discovered.contains(neighbor)) {
+					discovered.add(neighbor);
+					closedSet.addFirst(neighbor);
+					if (rand.nextBoolean()) {
+					}
+					spreadTo(worldGrid[neighbor.xPos][neighbor.yPos]);
+				}
+			}
+		}
+	}
+
+	private void specificExpand3(Mould head) {
+		LinkedList<Node> currBFSPath = mouldHeads.get(head);
+		if (currBFSPath == null || currBFSPath.size() == 0) {
+			Node toExpandTo = getExpansionNode(head);
+			BFS bfs = new BFS(worldGrid, nodePool, nodePool.getNode(head), toExpandTo, true);
+			currBFSPath = bfs.search();
+			mouldHeads.put(head, currBFSPath);
+		}
+		// Get next node from A*s path.
+		Node currNode = currBFSPath.pop();
+		Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
+		spreadTo(currNeighbor);
 	}
 
 	private void specificExpand(Mould head) {
@@ -180,8 +325,8 @@ public class SlimeManager {
 		do {
 			// Generate the X and Y positions for the next move. Logic.Mould will try and move away from the head.
 			boolean randPicker = rand.nextBoolean();
-			xMove = currMould.generateXMove(randPicker) * rand.nextInt(8);
-			yMove = currMould.generateYMove(randPicker) * rand.nextInt(8);
+			xMove = currMould.generateXMove(randPicker, head) * rand.nextInt(3);
+			yMove = currMould.generateYMove(randPicker, head) * rand.nextInt(3);
 
 			// Get the actual neighbor from the grid of tiles.
 			xPos = currMould.getXPos();
@@ -212,6 +357,7 @@ public class SlimeManager {
 				break;
 			case FOOD_TYPE:
 				eatFood((Food) toSpread);
+				//TODO: Handle concurrency
 				foodsFound.put((Food) toSpread, null);
 				break;
 			case MOULD_TYPE:
@@ -225,13 +371,13 @@ public class SlimeManager {
 	 */
 	private void spreadToMould(Mould mould) {
 		mould.timesPast++;
-		if (Mould.maxTimesPast < mould.timesPast) {
-			Mould.maxTimesPast = mould.timesPast;
-			if (!mouldHeads.containsKey(mould)) {
-
-				headsToAdd.put(mould, null);
-			}
-		}
+//		if (Mould.maxTimesPast < mould.timesPast) {
+//			Mould.maxTimesPast = mould.timesPast;
+//			if (!mouldHeads.containsKey(mould)) {
+//
+//				headsToAdd.put(mould, null);
+//			}
+//		}
 		mould.saturate();
 		double opacity = ((Color) mould.getElementRepr().getFill()).getOpacity();
 	}
@@ -309,10 +455,11 @@ public class SlimeManager {
 		} while (currElem.getType() != EMPTY_TYPE);
 		Mould head = new Mould(randX, randY);
 		mouldHeads.put(head, null);
+		mouldHead = head;
 		place(head);
 	}
 
-	// Helpers //
+// Helpers //
 
 	public void restart() {
 		timer.stop();
@@ -325,7 +472,7 @@ public class SlimeManager {
 		for (int x = 0; x < X_TILES; x++) {
 			for (int y = 0; y < Y_TILES; y++) {
 				Element currElem = worldGrid[x][y];
-				if (currElem.getType() == MOULD_TYPE) {
+				if (currElem.getType() == MOULD_TYPE && !vains.contains(currElem)) {
 					currElem.desaturate();
 					// If current elements reaches a minimal threshold opacity, it should disappear.
 					if (((Color) currElem.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {

@@ -38,7 +38,7 @@ public class Node {
 	 * @return manhattan distance to other node.
 	 */
 	public double getManhattanTo(Node other) {
-		return Math.abs((xPos - other.xPos + Math.abs((yPos - other.yPos))));
+		return Math.abs(xPos - other.xPos) + Math.abs(yPos - other.yPos);
 	}
 }
 
