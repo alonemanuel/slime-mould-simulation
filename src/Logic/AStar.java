@@ -11,6 +11,7 @@ public class AStar {
 	 * Node pool to work on.
 	 */
 	private static NodeMap nodePool;
+	private static Element[][] worldGrid;
 	/**
 	 * Start node.
 	 */
@@ -39,17 +40,22 @@ public class AStar {
 	 * Map of f scored.
 	 */
 	private HashMap<Node, Double> fScore;
+	private boolean isExpanding;
 
 	/**
 	 * Constructor.
 	 */
-	public AStar(NodeMap nodePool, Node start, Node goal) {
+	public AStar(Element[][] worldGrid, NodeMap nodePool, Node start, Node goal, boolean isExpanding) {
 		// Avoid time consuming creations of node pools.
 		if (AStar.nodePool == null) {
 			AStar.nodePool = nodePool;
 		}
+		if (AStar.worldGrid == null) {
+			AStar.worldGrid = worldGrid;
+		}
 		this.start = start;
 		this.goal = goal;
+		this.isExpanding = isExpanding;
 
 		// The set of nodes already evaluated
 		closedSet = new HashSet<>();
@@ -81,6 +87,14 @@ public class AStar {
 	 */
 	private double h(Node node) {
 		// TODO: Add infinity to nodes outside of moulds.
+		double manhattan = node.getManhattanTo(goal);
+		boolean isMould = worldGrid[node.xPos][node.yPos].getType() == Element.MOULD_TYPE;
+		if (isMould && isExpanding) {
+			return node.getManhattanTo(goal) + 3;
+		}
+		if ((!isMould) && (!isExpanding)) {
+			return node.getManhattanTo(goal) + 3;
+		}
 		return node.getManhattanTo(goal);
 	}
 

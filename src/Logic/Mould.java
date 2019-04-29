@@ -34,6 +34,9 @@ public class Mould extends Element {
 	 */
 	private static boolean hasFoundFood;
 
+	public int timesPast;
+	public static int maxTimesPast;
+
 	// Methods //
 
 	/**
@@ -49,6 +52,7 @@ public class Mould extends Element {
 			mouldHead = this;
 			hasFoundFood = false;
 		}
+		timesPast = 1;
 	}
 
 	/**

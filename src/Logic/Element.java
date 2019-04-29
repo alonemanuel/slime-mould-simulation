@@ -18,9 +18,9 @@ public abstract class Element {
 	public static final int FOOD_TYPE = 1;
 	public static final int MOULD_TYPE = 2;
 	public static final double SAT_BRIGHT_FACTOR = 0.95;
-	public static final double SAT_OPAQ_FACTOR = 1.8;
+	public static final double SAT_OPAQ_FACTOR = 3.;
 	public static final double DESAT_BRIGHT_FACTOR = 1.001;
-	public static final double DESAT_OPAQ_FACTOR = 0.99;
+	public static final double DESAT_OPAQ_FACTOR = 0.999;
 
 	/**
 	 * X position of element.
