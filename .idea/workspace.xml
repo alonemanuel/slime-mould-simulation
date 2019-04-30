@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/Manager/SlimeManager.java" line="354" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Element.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logic/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Empty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Food.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager/SlimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/SlimeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager/manager.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/manager.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/manager.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager/managerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/managerController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,13 +72,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="475" column="45" lean-forward="true" selection-start-line="475" selection-start-column="45" selection-end-line="475" selection-end-column="45" />
+            <state relative-caret-position="383">
+              <caret line="333" column="31" lean-forward="true" selection-start-line="333" selection-start-column="31" selection-end-line="333" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#10478#10479#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+              <folding>
+                <element signature="e#206#207#0" expanded="true" />
+                <element signature="e#239#240#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +101,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="514">
               <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
             </state>
           </provider>
@@ -87,47 +109,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Manager/manager.css">
+        <entry file="file://$PROJECT_DIR$/src/Photos/oat_opaq.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Manager/managerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            <state relative-caret-position="181">
+              <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
+        <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/image/Image.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-              <folding>
-                <element signature="e#183#184#0" expanded="true" />
-                <element signature="e#216#217#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="268">
+              <caret line="429" column="47" lean-forward="true" selection-start-line="429" selection-start-column="47" selection-end-line="429" selection-end-column="47" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Photos/mould1.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Photos/mould2.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Photos/mould_tokyo.jpg">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/Element.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+            <state relative-caret-position="-490">
+              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
               <folding>
                 <element signature="docComment;class#Element#0" />
                 <element signature="docComment;field#EMPTY_TYPE#0;class#Element#0" />
@@ -137,6 +145,8 @@
                 <element signature="docComment;field#_elementRepr#0;class#Element#0" />
                 <element signature="docComment;method#Element#0;class#Element#0" />
                 <element signature="docComment;method#getElementRepr#0;class#Element#0" />
+                <element signature="e#1076#1077#0" expanded="true" />
+                <element signature="e#1102#1103#0" expanded="true" />
                 <element signature="docComment;method#setReprDim#0;class#Element#0" />
                 <element signature="method#setReprDim#0;class#Element#0" />
                 <element signature="docComment;method#setRepr#0;class#Element#0" />
@@ -151,10 +161,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/java/lang/ClassLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="1391" selection-start-line="1391" selection-end-line="1391" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/Food.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="102">
+              <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
               <folding>
                 <element signature="docComment;class#Food#0" />
                 <element signature="method#setRepr#0;class#Food#0" />
@@ -165,20 +184,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Logic/AStar.java">
+        <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/jdk/internal/loader/BootLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="145" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
-              <folding>
-                <element signature="docComment;field#nodePool#0;class#AStar#0" />
-                <element signature="docComment;field#start#0;class#AStar#0" />
-                <element signature="docComment;field#goal#0;class#AStar#0" />
-                <element signature="docComment;field#closedSet#0;class#AStar#0" />
-                <element signature="docComment;field#openSet#0;class#AStar#0" />
-                <element signature="docComment;field#cameFrom#0;class#AStar#0" />
-                <element signature="docComment;field#gScore#0;class#AStar#0" />
-                <element signature="docComment;field#fScore#0;class#AStar#0" />
-              </folding>
+            <state relative-caret-position="159">
+              <caret line="153" selection-start-line="153" selection-end-line="153" />
             </state>
           </provider>
         </entry>
@@ -198,17 +207,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>canBe</find>
-      <find>set</find>
-      <find>desa</find>
-      <find>setFou</find>
-      <find>setFound</find>
-      <find>found</find>
-      <find>syste</find>
-      <find>SATU</find>
-      <find>h</find>
-      <find>satur</find>
-      <find>v</find>
       <find>DES</find>
       <find>DESA</find>
       <find>satu</find>
@@ -219,15 +217,26 @@
       <find>system</find>
       <find>lac</find>
       <find>head</find>
-      <find>placeMo</find>
       <find>DE</find>
-      <find>place</find>
       <find>DESAT</find>
       <find>food</find>
       <find>eatF</find>
-      <find>DISAPP</find>
       <find>reene</find>
       <find>Empty</find>
+      <find>replace</find>
+      <find>spreadToEm</find>
+      <find>eatFood</find>
+      <find>place(</find>
+      <find>popul</find>
+      <find>placeMo</find>
+      <find>URL_QUI</find>
+      <find>rest</find>
+      <find>DISAPP</find>
+      <find>getChil</find>
+      <find>place</find>
+      <find>placeMou</find>
+      <find>popula</find>
+      <find>oatme</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -280,17 +289,17 @@
         <option value="$PROJECT_DIR$/src/module-info.java" />
         <option value="$PROJECT_DIR$/src/Manager/Main.java" />
         <option value="$PROJECT_DIR$/src/Manager/SlimeMouldException.java" />
-        <option value="$PROJECT_DIR$/src/Logic/Food.java" />
         <option value="$PROJECT_DIR$/src/Manager/manager.fxml" />
-        <option value="$PROJECT_DIR$/src/Manager/managerController.java" />
         <option value="$PROJECT_DIR$/src/Logic/NodeMap.java" />
         <option value="$PROJECT_DIR$/src/Logic/Node.java" />
         <option value="$PROJECT_DIR$/src/Logic/BFS.java" />
         <option value="$PROJECT_DIR$/src/Logic/Mould.java" />
         <option value="$PROJECT_DIR$/src/Logic/AStar.java" />
+        <option value="$PROJECT_DIR$/src/Manager/manager.css" />
+        <option value="$PROJECT_DIR$/src/Manager/managerController.java" />
+        <option value="$PROJECT_DIR$/src/Logic/Food.java" />
         <option value="$PROJECT_DIR$/src/Logic/Element.java" />
         <option value="$PROJECT_DIR$/src/Manager/SlimeManager.java" />
-        <option value="$PROJECT_DIR$/src/Manager/manager.css" />
         <option value="$PROJECT_DIR$/src/Logic/Empty.java" />
       </list>
     </option>
@@ -393,6 +402,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Manager" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -401,6 +411,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\alon_emanuel_drive\School\Year 2\Semester_2\67690_AI_as_a_Tool\MidProject\MID_67690_AI_AS_TOOL_HUJI\src\Manager" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\alon_emanuel_drive\School\Year 2\Semester_2\67690_AI_as_a_Tool\MidProject\MID_67690_AI_AS_TOOL_HUJI\src\Manager" />
       <recent name="E:\alon_emanuel_drive\School\Year 2\Semester_2\67690_AI_as_a_Tool\MidProject\MID_67690_AI_AS_TOOL_HUJI\src\RecyclingBin" />
@@ -507,12 +520,12 @@
       <workItem from="1555679999006" duration="15787000" />
       <workItem from="1555927629522" duration="82581000" />
       <workItem from="1556563127750" duration="10686000" />
-      <workItem from="1556585013838" duration="2103000" />
+      <workItem from="1556585013838" duration="11424000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165714000" />
+    <option name="totallyTimeSpent" value="175035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -528,7 +541,7 @@
       <window_info id="Favorites" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32791328" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31233245" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23726542" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39276138" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -648,21 +661,39 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
-          <line>286</line>
+          <line>439</line>
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
-          <line>294</line>
+          <line>447</line>
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
-          <line>245</line>
+          <line>243</line>
           <properties />
           <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>373</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>338</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
+          <line>349</line>
+          <properties />
+          <option name="timeStamp" value="55" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -678,34 +709,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/layout/Region.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="70" column="31" lean-forward="true" selection-start-line="70" selection-start-column="31" selection-end-line="70" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/Node.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="142" column="22" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/Parent.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="45" column="37" lean-forward="true" selection-start-line="45" selection-start-column="37" selection-end-line="45" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../../Year 1/sem2/oop/week2/ex2_oop/Ex2 supplied material-20180412/SpaceWars.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="264" column="19" lean-forward="true" selection-start-line="264" selection-start-column="19" selection-end-line="264" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Close/ExitMenu.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -919,13 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Manager/managerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-163">
-          <caret line="65" lean-forward="true" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -992,28 +988,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Photos/oat_opaq.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Photos/mould3.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Food.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="docComment;class#Food#0" />
-            <element signature="method#setRepr#0;class#Food#0" />
-            <element signature="docComment;method#setType#0;class#Food#0" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould_tokyo.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould1.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/AStar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="145" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
+        <state relative-caret-position="448">
+          <caret line="137" column="49" lean-forward="true" selection-start-line="137" selection-start-column="49" selection-end-line="137" selection-end-column="49" />
           <folding>
             <element signature="docComment;field#nodePool#0;class#AStar#0" />
             <element signature="docComment;field#start#0;class#AStar#0" />
@@ -1027,45 +1017,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Photos/mould2.jpg">
+    <entry file="file://$PROJECT_DIR$/src/Manager/manager.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="51" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Photos/oat_flakes.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Photos/mould_tokyo.jpg">
+    <entry file="file://$PROJECT_DIR$/src/Photos/oat_opaq.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
+        <state relative-caret-position="514">
           <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Photos/mould1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Manager/manager.css">
+    <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/image/Image.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        <state relative-caret-position="268">
+          <caret line="429" column="47" lean-forward="true" selection-start-line="429" selection-start-column="47" selection-end-line="429" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
+    <entry file="file://$PROJECT_DIR$/src/Logic/Food.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        <state relative-caret-position="102">
+          <caret line="8" column="59" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding>
-            <element signature="e#183#184#0" expanded="true" />
-            <element signature="e#216#217#0" expanded="true" />
+            <element signature="docComment;class#Food#0" />
+            <element signature="method#setRepr#0;class#Food#0" />
+            <element signature="docComment;method#setType#0;class#Food#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/jdk/internal/loader/BootLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.3/lib/src.zip!/java.base/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="1391" selection-start-line="1391" selection-end-line="1391" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Element.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
+        <state relative-caret-position="-490">
+          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
           <folding>
             <element signature="docComment;class#Element#0" />
             <element signature="docComment;field#EMPTY_TYPE#0;class#Element#0" />
@@ -1075,6 +1084,8 @@
             <element signature="docComment;field#_elementRepr#0;class#Element#0" />
             <element signature="docComment;method#Element#0;class#Element#0" />
             <element signature="docComment;method#getElementRepr#0;class#Element#0" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1102#1103#0" expanded="true" />
             <element signature="docComment;method#setReprDim#0;class#Element#0" />
             <element signature="method#setReprDim#0;class#Element#0" />
             <element signature="docComment;method#setRepr#0;class#Element#0" />
@@ -1087,12 +1098,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Manager/managerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="80" column="29" selection-start-line="80" selection-start-column="29" selection-end-line="80" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="475" column="45" lean-forward="true" selection-start-line="475" selection-start-column="45" selection-end-line="475" selection-end-column="45" />
+        <state relative-caret-position="383">
+          <caret line="333" column="31" lean-forward="true" selection-start-line="333" selection-start-column="31" selection-end-line="333" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#10478#10479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+          <folding>
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#239#240#0" expanded="true" />
           </folding>
         </state>
       </provider>

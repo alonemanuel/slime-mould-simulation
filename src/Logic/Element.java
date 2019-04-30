@@ -52,7 +52,7 @@ public abstract class Element {
 	/**
 	 * @return Returns element representation.
 	 */
-	public Shape getElementRepr() {
+	public Rectangle getElementRepr() {
 		return _elementRepr;
 	}
 

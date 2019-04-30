@@ -12,7 +12,7 @@
 
 <BorderPane fx:id="borderPane" styleClass="bodybg" stylesheets="@manager.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.managerController">
     <top>
-        <Text fill="#e5ff7d" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="6.0" text="Slime Mould Everything" textAlignment="CENTER" BorderPane.alignment="CENTER">
+        <Text fill="#ffd65e" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="6.0" text="Slime Mould Everything" textAlignment="CENTER" BorderPane.alignment="CENTER">
             <font>
                 <Font name="Agency FB Bold" size="96.0" />
             </font>
@@ -27,12 +27,12 @@
    <right>
       <VBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#closeProgram" prefHeight="50.0" prefWidth="150.0" text="Exit" textAlignment="CENTER">
+                <Button fx:id="exitButton" mnemonicParsing="false" onAction="#closeProgram" prefHeight="50.0" prefWidth="150.0" styleClass="button_example" stylesheets="@manager.css" text="Exit" textAlignment="CENTER">
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font>
                 </Button>
-            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartButton" prefHeight="50.0" prefWidth="150.0" text="Restart">
+            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restartButton" prefHeight="50.0" prefWidth="150.0" styleClass="button_example" stylesheets="@manager.css" text="Restart">
                <font>
                   <Font name="Arial" size="18.0" />
                </font></Button>
@@ -45,12 +45,12 @@
    <left>
       <VBox alignment="CENTER" spacing="100.0" BorderPane.alignment="CENTER">
          <children>
-            <ComboBox fx:id="foodChoiceBox" onAction="#placeFood" prefHeight="50.0" prefWidth="150.0" promptText="Place food" />
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#placeMould" prefHeight="50.0" prefWidth="150.0" text="Place Mould" textAlignment="CENTER">
+            <ComboBox fx:id="foodChoiceBox" onAction="#placeFood" prefHeight="50.0" prefWidth="150.0" promptText="Place food" styleClass="button_example" stylesheets="@manager.css" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#placeMould" prefHeight="50.0" prefWidth="150.0" styleClass="button_example" stylesheets="@manager.css" text="Place Mould" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="18.0" />
                </font></Button>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateManager" prefHeight="50.0" prefWidth="150.0" text="Expand" textAlignment="CENTER">
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#updateManager" prefHeight="50.0" prefWidth="150.0" styleClass="button_example" stylesheets="@manager.css" text="Expand" textAlignment="CENTER">
                     <font>
                         <Font name="Arial" size="18.0" />
                     </font>
@@ -68,7 +68,7 @@
       <Blend />
    </effect>
    <center>
-      <Pane fx:id="pane" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="pane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: rgba(0,0,19,0.8);" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="20.0" />
          </BorderPane.margin></Pane>

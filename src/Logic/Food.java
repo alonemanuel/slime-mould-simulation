@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
  * Class representing food.
  */
 public class Food extends Element {
-	public static final Color FOOD_COLOR = Color.DARKGREEN;
+	public static final Color FOOD_COLOR = Color.SANDYBROWN;
 
 	public Food(int xPos, int yPos) {
 		super(xPos, yPos);
