@@ -4,6 +4,8 @@ package Manager;
 
 import Logic.*;
 import javafx.animation.AnimationTimer;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
@@ -207,8 +209,9 @@ public class SlimeManager {
 		}
 		switch (currNeighbor.getType()) {
 			case MOULD_TYPE:
-				if (Math.abs(edges.size() - edgesToRemove.size()) ==0) {
-					edgesToAdd.add((Mould)currNeighbor);
+				if (Math.abs(edges.size() - edgesToRemove.size()) == 0 || vains.contains(currNeighbor)) {
+
+					edgesToAdd.add((Mould) currNeighbor);
 				}
 				return false;
 			case EMPTY_TYPE:
