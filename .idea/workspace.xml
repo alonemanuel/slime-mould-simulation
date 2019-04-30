@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Logic/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Element.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Logic/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logic/Empty.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Manager/SlimeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/SlimeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Manager/manager.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manager/manager.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,34 +64,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/animation/AnimationTimer.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="463" column="37" selection-start-line="463" selection-start-column="37" selection-end-line="463" selection-end-column="37" />
+            <state relative-caret-position="144">
+              <caret line="475" column="45" lean-forward="true" selection-start-line="475" selection-start-column="45" selection-end-line="475" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1843#1931#0" expanded="true" />
-                <element signature="e#1930#1931#0" expanded="true" />
-                <element signature="e#11971#11972#0" expanded="true" />
-                <element signature="e#11990#11991#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Photos/oat_opaq.png">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Manager/manager.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+              <folding>
+                <element signature="e#183#184#0" expanded="true" />
+                <element signature="e#216#217#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -104,11 +119,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Photos/mould3.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Photos/mould_tokyo.jpg">
           <provider selected="true" editor-type-id="images" />
         </entry>
@@ -116,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/Element.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+            <state relative-caret-position="155">
+              <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
               <folding>
                 <element signature="docComment;class#Element#0" />
                 <element signature="docComment;field#EMPTY_TYPE#0;class#Element#0" />
@@ -126,7 +136,6 @@
                 <element signature="docComment;field#_type#0;class#Element#0" />
                 <element signature="docComment;field#_elementRepr#0;class#Element#0" />
                 <element signature="docComment;method#Element#0;class#Element#0" />
-                <element signature="method#Element#0;class#Element#0" />
                 <element signature="docComment;method#getElementRepr#0;class#Element#0" />
                 <element signature="docComment;method#setReprDim#0;class#Element#0" />
                 <element signature="method#setReprDim#0;class#Element#0" />
@@ -158,8 +167,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Logic/AStar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1565">
-              <caret line="145" column="7" lean-forward="true" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
+            <state relative-caret-position="431">
+              <caret line="145" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
               <folding>
                 <element signature="docComment;field#nodePool#0;class#AStar#0" />
                 <element signature="docComment;field#start#0;class#AStar#0" />
@@ -180,19 +189,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="module-info" />
-        <option value="CSS File" />
         <option value="Interface" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>did</find>
-      <find>OPA</find>
-      <find>de</find>
-      <find>update</find>
       <find>canBe</find>
       <find>set</find>
       <find>desa</find>
@@ -219,6 +224,10 @@
       <find>place</find>
       <find>DESAT</find>
       <find>food</find>
+      <find>eatF</find>
+      <find>DISAPP</find>
+      <find>reene</find>
+      <find>Empty</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -232,7 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/World.java" />
         <option value="$PROJECT_DIR$/src/sample/Food.java" />
         <option value="$PROJECT_DIR$/src/sample/Mould.java" />
         <option value="$PROJECT_DIR$/src/sample/SimulationManager.java" />
@@ -275,7 +283,6 @@
         <option value="$PROJECT_DIR$/src/Logic/Food.java" />
         <option value="$PROJECT_DIR$/src/Manager/manager.fxml" />
         <option value="$PROJECT_DIR$/src/Manager/managerController.java" />
-        <option value="$PROJECT_DIR$/src/Logic/Empty.java" />
         <option value="$PROJECT_DIR$/src/Logic/NodeMap.java" />
         <option value="$PROJECT_DIR$/src/Logic/Node.java" />
         <option value="$PROJECT_DIR$/src/Logic/BFS.java" />
@@ -283,6 +290,8 @@
         <option value="$PROJECT_DIR$/src/Logic/AStar.java" />
         <option value="$PROJECT_DIR$/src/Logic/Element.java" />
         <option value="$PROJECT_DIR$/src/Manager/SlimeManager.java" />
+        <option value="$PROJECT_DIR$/src/Manager/manager.css" />
+        <option value="$PROJECT_DIR$/src/Logic/Empty.java" />
       </list>
     </option>
   </component>
@@ -294,10 +303,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="182" />
-    <option name="y" value="-22" />
+    <option name="x" value="181" />
+    <option name="y" value="-23" />
     <option name="width" value="1675" />
-    <option name="height" value="1089" />
+    <option name="height" value="1090" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -310,23 +319,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="MID_67690_AI_AS_TOOL_HUJI" type="58d84e3e:PackageViewProjectNode" />
-              <item name="MID_67690_AI_AS_TOOL_HUJI" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="MID_67690_AI_AS_TOOL_HUJI" type="58d84e3e:PackageViewProjectNode" />
-              <item name="MID_67690_AI_AS_TOOL_HUJI" type="616d4139:PackageViewModuleNode" />
-              <item name="Libraries" type="5c3f07af:PackageViewLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -366,6 +358,23 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MID_67690_AI_AS_TOOL_HUJI" type="58d84e3e:PackageViewProjectNode" />
+              <item name="MID_67690_AI_AS_TOOL_HUJI" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="MID_67690_AI_AS_TOOL_HUJI" type="58d84e3e:PackageViewProjectNode" />
+              <item name="MID_67690_AI_AS_TOOL_HUJI" type="616d4139:PackageViewModuleNode" />
+              <item name="Libraries" type="5c3f07af:PackageViewLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -498,11 +507,12 @@
       <workItem from="1555679999006" duration="15787000" />
       <workItem from="1555927629522" duration="82581000" />
       <workItem from="1556563127750" duration="10686000" />
+      <workItem from="1556585013838" duration="2103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163611000" />
+    <option name="totallyTimeSpent" value="165714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -512,7 +522,7 @@
       <window_info id="Image Layers" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
-      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.21006711" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.21275167" />
       <window_info id="Learn" order="5" />
       <window_info id="Structure" order="6" weight="0.24965326" />
       <window_info id="Favorites" order="7" />
@@ -638,19 +648,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
-          <line>282</line>
+          <line>286</line>
           <properties />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
-          <line>290</line>
+          <line>294</line>
           <properties />
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Manager/SlimeManager.java</url>
-          <line>241</line>
+          <line>245</line>
           <properties />
           <option name="timeStamp" value="46" />
         </line-breakpoint>
@@ -668,13 +678,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/layout/BorderPane.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/scene/layout/Region.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -833,12 +836,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Close/close.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Close/closeController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -891,14 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Manager/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -909,13 +904,6 @@
             <element signature="docComment;method#start#0;class#Main#0" />
             <element signature="method#start#0;class#Main#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="55" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -999,32 +987,12 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/javafx-sdk-11.0.2/lib/javafx.graphics.jar!/javafx/animation/AnimationTimer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
+        <state relative-caret-position="714">
           <caret line="53" column="20" selection-start-line="53" selection-start-column="20" selection-end-line="53" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Logic/AStar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1565">
-          <caret line="145" column="7" lean-forward="true" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
-          <folding>
-            <element signature="docComment;field#nodePool#0;class#AStar#0" />
-            <element signature="docComment;field#start#0;class#AStar#0" />
-            <element signature="docComment;field#goal#0;class#AStar#0" />
-            <element signature="docComment;field#closedSet#0;class#AStar#0" />
-            <element signature="docComment;field#openSet#0;class#AStar#0" />
-            <element signature="docComment;field#cameFrom#0;class#AStar#0" />
-            <element signature="docComment;field#gScore#0;class#AStar#0" />
-            <element signature="docComment;field#fScore#0;class#AStar#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Photos/mould1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Photos/mould2.jpg">
+    <entry file="file://$PROJECT_DIR$/src/Photos/oat_opaq.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Photos/mould3.jpg">
@@ -1042,16 +1010,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Photos/oat_opaq.png">
+    <entry file="file://$PROJECT_DIR$/src/Logic/AStar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="145" column="7" selection-start-line="145" selection-start-column="7" selection-end-line="145" selection-end-column="7" />
+          <folding>
+            <element signature="docComment;field#nodePool#0;class#AStar#0" />
+            <element signature="docComment;field#start#0;class#AStar#0" />
+            <element signature="docComment;field#goal#0;class#AStar#0" />
+            <element signature="docComment;field#closedSet#0;class#AStar#0" />
+            <element signature="docComment;field#openSet#0;class#AStar#0" />
+            <element signature="docComment;field#cameFrom#0;class#AStar#0" />
+            <element signature="docComment;field#gScore#0;class#AStar#0" />
+            <element signature="docComment;field#fScore#0;class#AStar#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould2.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Photos/mould_tokyo.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Manager/manager.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Photos/mould1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Manager/manager.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic/Empty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding>
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#216#217#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Logic/Element.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="31" column="21" lean-forward="true" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        <state relative-caret-position="155">
+          <caret line="44" column="11" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
           <folding>
             <element signature="docComment;class#Element#0" />
             <element signature="docComment;field#EMPTY_TYPE#0;class#Element#0" />
@@ -1060,7 +1074,6 @@
             <element signature="docComment;field#_type#0;class#Element#0" />
             <element signature="docComment;field#_elementRepr#0;class#Element#0" />
             <element signature="docComment;method#Element#0;class#Element#0" />
-            <element signature="method#Element#0;class#Element#0" />
             <element signature="docComment;method#getElementRepr#0;class#Element#0" />
             <element signature="docComment;method#setReprDim#0;class#Element#0" />
             <element signature="method#setReprDim#0;class#Element#0" />
@@ -1076,14 +1089,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Manager/SlimeManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="463" column="37" selection-start-line="463" selection-start-column="37" selection-end-line="463" selection-end-column="37" />
+        <state relative-caret-position="144">
+          <caret line="475" column="45" lean-forward="true" selection-start-line="475" selection-start-column="45" selection-end-line="475" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1843#1931#0" expanded="true" />
-            <element signature="e#1930#1931#0" expanded="true" />
-            <element signature="e#11971#11972#0" expanded="true" />
-            <element signature="e#11990#11991#0" expanded="true" />
           </folding>
         </state>
       </provider>

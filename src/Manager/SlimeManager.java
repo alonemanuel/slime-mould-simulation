@@ -24,7 +24,7 @@ public class SlimeManager {
 	/**
 	 * Size of tile (height == width == size)
 	 */
-	public static final int REPR_SIZE = 10;
+	public static final int REPR_SIZE = 8;
 
 	// Constants //
 	/**
@@ -54,7 +54,7 @@ public class SlimeManager {
 	/**
 	 * Below this thresh, moulds disappear.
 	 */
-	private static final double DISAPPEAR_THRESH = 0.001;
+	private static final double DISAPPEAR_THRESH = 0.01;
 	private static final int FRAME_THRESH = 10;
 	/**
 	 * Pool of nodes.
@@ -137,8 +137,11 @@ public class SlimeManager {
 		// Before each movement, reenergize moulds.
 		// Move according to the expansion rate.
 			getFood5();
-		if (frame == FRAME_THRESH) {
+		if (frame == 0) {
+
+			//		if (frame == FRAME_THRESH) {
 			frame = 0;
+
 			reenergizeMoulds();
 			if (edges.isEmpty()) {
 				edges.addFirst(mouldHead);
@@ -209,8 +212,8 @@ public class SlimeManager {
 		}
 		switch (currNeighbor.getType()) {
 			case MOULD_TYPE:
-				if (Math.abs(edges.size() - edgesToRemove.size()) == 0 || vains.contains(currNeighbor)) {
-
+				if ((Math.abs(edges.size() - edgesToRemove.size()) == 0) ) {
+// TODO: What about the slime not able to pass through walls?
 					edgesToAdd.add((Mould) currNeighbor);
 				}
 				return false;
@@ -239,6 +242,7 @@ public class SlimeManager {
 		foodsFound.put(food, astar.search());
 		// Set food as the new head
 		mouldHead = spawnTo(food);
+		mouldHead.getElementRepr().setFill(Color.GREENYELLOW);
 		edgesToRemove.addAll(edges);
 		edgesToAdd.clear();
 		edgesToAdd.add(mouldHead);

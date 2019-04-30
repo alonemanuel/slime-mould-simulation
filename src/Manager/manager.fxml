@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" style="-fx-background-color: aquamarine;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.managerController">
+<BorderPane fx:id="borderPane" styleClass="bodybg" stylesheets="@manager.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Manager.managerController">
     <top>
-        <Text fill="#09080880" strokeType="OUTSIDE" strokeWidth="0.0" text="Slime Mould Everything" textAlignment="CENTER" BorderPane.alignment="CENTER">
+        <Text fill="#e5ff7d" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="6.0" text="Slime Mould Everything" textAlignment="CENTER" BorderPane.alignment="CENTER">
             <font>
-                <Font name="Agency FB" size="76.0" />
+                <Font name="Agency FB Bold" size="96.0" />
             </font>
         </Text>
     </top>
@@ -69,6 +69,8 @@
    </effect>
    <center>
       <Pane fx:id="pane" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
-      </Pane>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin></Pane>
    </center>
 </BorderPane>

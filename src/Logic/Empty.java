@@ -13,8 +13,8 @@ public class Empty extends Element {
     @Override
     public void setRepr() {
         setReprDim();
-        _elementRepr.setFill(EMPTY_COLOR);
-        _elementRepr.setStroke(EMPTY_COLOR);
+        _elementRepr.setFill(EMPTY_COLOR.deriveColor(1,1,1,0.7));
+        _elementRepr.setStroke(EMPTY_COLOR.deriveColor(1,1,1,0.7));
     }
 
     @Override
