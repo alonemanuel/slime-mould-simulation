@@ -7,7 +7,10 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Random;
 
 import static Logic.Element.*;
 
@@ -50,6 +53,7 @@ public class SlimeManager {
 	 * Below this thresh, moulds disappear.
 	 */
 	private static final double DISAPPEAR_THRESH = 0.001;
+	private static final int FRAME_THRESH = 10;
 	/**
 	 * Pool of nodes.
 	 */
@@ -74,12 +78,11 @@ public class SlimeManager {
 	 * Mould heads.
 	 */
 	private HashMap<Mould, LinkedList<Node>> mouldHeads;
-	private HashSet<Mould> vains;
+	private HashSet<Element> vains;
 	private LinkedList<Mould> edges;
 	private Mould mouldHead;
 	private LinkedList<Mould> edgesToRemove;
 	private LinkedList<Mould> edgesToAdd;
-	private boolean didGetFood = false;
 	/**
 	 * Animation timer of the program.
 	 */
@@ -89,6 +92,7 @@ public class SlimeManager {
 			moveSlime();
 		}
 	};
+	private boolean didGetFood = false;
 
 	// Methods //
 
@@ -129,14 +133,17 @@ public class SlimeManager {
 
 	private void moveSlime() {
 		// Before each movement, reenergize moulds.
-		reenergizeMoulds();
 		// Move according to the expansion rate.
-		for (int i = 0; i < EXPANSION_RATE; i++) {
+			getFood5();
+		if (frame == FRAME_THRESH) {
+			frame = 0;
+			reenergizeMoulds();
 			if (edges.isEmpty()) {
 				edges.addFirst(mouldHead);
 			}
-			getFood5();
 			searchForFood5();
+		} else {
+			frame++;
 		}
 	}
 
@@ -146,11 +153,11 @@ public class SlimeManager {
 			if (foodsFound.get(food).isEmpty()) {
 				toRemove.add(food);
 			} else {
-			// Get next node from A*s path.
-			Node currNode = foodsFound.get(food).pop();
-			Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
-			spreadTo(currNeighbor);  // TODO: Should be spawnTO?
-				vains.add((Mould) currNeighbor);
+				// Get next node from A*s path.
+				Node currNode = foodsFound.get(food).pop();
+				Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
+				spreadTo(currNeighbor);  // TODO: Should be spawnTO?
+				vains.add(currNeighbor);
 			}
 		}
 		foodsFound.keySet().removeAll(toRemove);
@@ -159,17 +166,24 @@ public class SlimeManager {
 	private void searchForFood5() {
 		edgesToRemove.clear();
 		edgesToAdd.clear();
+		boolean foundFood=false;
 		for (Mould edge : edges) {
 			for (int i = 0; i < 3; i++) {
 
-			expandEdge(edge);
+				foundFood = expandEdge(edge);
+				if (foundFood) {
+					break;
+				}
+			}
+			if (foundFood) {
+				break;
 			}
 		}
 		edges.removeAll(edgesToRemove);
 		edges.addAll(edgesToAdd);
 	}
 
-	private void expandEdge(Mould edge) {
+	private boolean expandEdge(Mould edge) {
 		Random rand = new Random();
 		int xMove, newX, xPos;
 		int yMove, newY, yPos;
@@ -189,19 +203,23 @@ public class SlimeManager {
 		currNeighbor = ((newX < 0) || (newY < 0)) ? null : worldGrid[newX][newY];
 		edgesToRemove.add(edge);
 		if (currNeighbor == null) {
-			return;
+			return false;
 		}
 		switch (currNeighbor.getType()) {
 			case MOULD_TYPE:
-				return;
+				if (Math.abs(edges.size() - edgesToRemove.size()) ==0) {
+					edgesToAdd.add((Mould)currNeighbor);
+				}
+				return false;
 			case EMPTY_TYPE:
 				Mould spawned = spawnTo(currNeighbor);
 				edgesToAdd.add(spawned);
-				return;
+				return false;
 			case FOOD_TYPE:
 				edgeEatFood((Food) currNeighbor);
-				return;
+				return true;
 		}
+		return false;
 	}
 
 	private Mould spawnTo(Element toSpawnTo) {
@@ -219,6 +237,7 @@ public class SlimeManager {
 		// Set food as the new head
 		mouldHead = spawnTo(food);
 		edgesToRemove.addAll(edges);
+		edgesToAdd.clear();
 		edgesToAdd.add(mouldHead);
 	}
 
