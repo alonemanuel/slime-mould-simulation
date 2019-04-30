@@ -53,7 +53,7 @@ public class SlimeManager {
 	/**
 	 * Below this thresh, moulds disappear.
 	 */
-	private static final double DISAPPEAR_THRESH = 0.12;
+	private static final double DISAPPEAR_THRESH = 0.11;
 	private static final int FRAME_THRESH = 10;
 	public static final int SPACING_FACTOR = 7;
 	public static HashSet<Element> veins;
