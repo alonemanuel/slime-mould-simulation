@@ -20,7 +20,7 @@ public abstract class Element {
 	public static final double SAT_BRIGHT_FACTOR = 0.95;
 	public static final double SAT_OPAQ_FACTOR = 3.;
 	public static final double DESAT_BRIGHT_FACTOR = 1.001;
-	public static final double DESAT_OPAQ_FACTOR = 0.95;
+	public static final double DESAT_OPAQ_FACTOR = 0.98;
 
 	/**
 	 * X position of element.

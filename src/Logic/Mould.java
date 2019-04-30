@@ -51,6 +51,10 @@ public class Mould extends Element {
 		timesPast = 1;
 	}
 
+	public void makeBold() {
+		_elementRepr.setFill(MOULD_COLOR);
+	}
+
 	/**
 	 * @return mould head.
 	 */

@@ -5,6 +5,9 @@
 
 .button_example{
     -fx-background-color: #ffd65e;
+    -fx-pref-width: 173;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
     /*-background-image: -webkit-linear-gradient(top, #ffd65e, #febf04);*/
     /*-background-image: -moz-linear-gradient(top, #ffd65e, #febf04);*/
     /*-background-image: -ms-linear-gradient(top, #ffd65e, #febf04);*/
@@ -14,6 +17,7 @@
 
 .button_example:hover{
     -fx-background-color: #ffc92b
+
     /*-fx-background-image: -webkit-linear-gradient(top, #ffc92b, #ce9a01);*/
     /*-fx-background-image: -moz-linear-gradient(top, #ffc92b, #ce9a01);*/
     /*-fx-background-image: -ms-linear-gradient(top, #ffc92b, #ce9a01);*/

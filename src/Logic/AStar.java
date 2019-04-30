@@ -1,5 +1,7 @@
 package Logic;
 
+import Manager.SlimeManager;
+
 import java.util.*;
 
 /**
@@ -40,12 +42,13 @@ public class AStar {
 	 * Map of f scored.
 	 */
 	private HashMap<Node, Double> fScore;
-	private boolean isExpanding;
+	private boolean didFindAllFood;
 
 	/**
 	 * Constructor.
 	 */
-	public AStar(Element[][] worldGrid, NodeMap nodePool, Node start, Node goal, boolean isExpanding) {
+	public AStar(Element[][] worldGrid, NodeMap nodePool, Node start, Node goal,
+				 boolean didFindAllFood) {
 		// Avoid time consuming creations of node pools.
 		if (AStar.nodePool == null) {
 			AStar.nodePool = nodePool;
@@ -55,7 +58,7 @@ public class AStar {
 		}
 		this.start = start;
 		this.goal = goal;
-		this.isExpanding = isExpanding;
+		this.didFindAllFood = didFindAllFood;
 
 		// The set of nodes already evaluated
 		closedSet = new HashSet<>();
@@ -87,8 +90,10 @@ public class AStar {
 	 */
 	private double h(Node node) {
 		// TODO: Add infinity to nodes outside of moulds.
-		boolean isMould = worldGrid[node.xPos][node.yPos].getType() == Element.MOULD_TYPE;
-		return isMould ? node.getManhattanTo(goal) : Double.POSITIVE_INFINITY;
+		Element elem = worldGrid[node.xPos][node.yPos];
+		boolean isMould = elem.getType() == Element.MOULD_TYPE;
+		double shorten = SlimeManager.veins.contains(elem) ? Double.NEGATIVE_INFINITY : 0;
+		return isMould ? node.getManhattanTo(goal) - shorten : Double.POSITIVE_INFINITY;
 	}
 
 	/**

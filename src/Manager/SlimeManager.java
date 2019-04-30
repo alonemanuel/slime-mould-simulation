@@ -49,17 +49,18 @@ public class SlimeManager {
 	/**
 	 * Number of food items.
 	 */
-	private static final int NUM_OF_FOODS = 8;
+	private static final int NUM_OF_FOODS = 12;
 	/**
 	 * Below this thresh, moulds disappear.
 	 */
-	private static final double DISAPPEAR_THRESH = 0.01;
+	private static final double DISAPPEAR_THRESH = 0.12;
 	private static final int FRAME_THRESH = 10;
+	public static final int SPACING_FACTOR = 7;
+	public static HashSet<Element> veins;
 	/**
 	 * Pool of nodes.
 	 */
 	public NodeMap nodePool;
-
 	// Fields //
 	HashMap<Mould, LinkedList<Node>> headsToAdd;
 	private int frame = 0;
@@ -74,12 +75,12 @@ public class SlimeManager {
 	/**
 	 * The currently found foods.
 	 */
-	private HashMap<Food, LinkedList<Node>> foodsFound;
+	private HashMap<Element, LinkedList<Node>> foodsFound;
+	private HashSet<Node> allFoods;
 	/**
 	 * Mould heads.
 	 */
 	private HashMap<Mould, LinkedList<Node>> mouldHeads;
-	private HashSet<Element> vains;
 	private LinkedList<Mould> edges;
 	private Mould mouldHead;
 	private LinkedList<Mould> edgesToRemove;
@@ -94,6 +95,7 @@ public class SlimeManager {
 		}
 	};
 	private boolean didGetFood = false;
+	private boolean didFindAllFood = false;
 
 	// Methods //
 
@@ -101,10 +103,11 @@ public class SlimeManager {
 	 * Default ctor.
 	 */
 	public SlimeManager(Pane pane) {
-		vains = new HashSet<>();
+		veins = new HashSet<>();
 		edges = new LinkedList<>();
 		edgesToRemove = new LinkedList<>();
 		edgesToAdd = new LinkedList<>();
+		allFoods = new HashSet<>();
 
 		worldGrid = new Element[X_TILES][Y_TILES];
 		nodePool = new NodeMap(X_TILES, Y_TILES);
@@ -137,10 +140,7 @@ public class SlimeManager {
 		// Move according to the expansion rate.
 		getFood();
 		if (frame == 0) {
-
-			//		if (frame == FRAME_THRESH) {
 			frame = 0;
-
 			reenergizeMoulds();
 			if (edges.isEmpty()) {
 				edges.addFirst(mouldHead);
@@ -152,16 +152,17 @@ public class SlimeManager {
 	}
 
 	private void getFood() {
-		HashSet<Food> toRemove = new HashSet<>();
-		for (Food food : foodsFound.keySet()) {
+		HashSet<Element> toRemove = new HashSet<>();
+		for (Element food : foodsFound.keySet()) {
 			if (foodsFound.get(food).isEmpty()) {
+
 				toRemove.add(food);
 			} else {
 				// Get next node from A*s path.
 				Node currNode = foodsFound.get(food).pop();
 				Element currNeighbor = worldGrid[currNode.xPos][currNode.yPos];
+				veins.add(currNeighbor);
 				spreadTo(currNeighbor);  // TODO: Should be spawnTO?
-				vains.add(currNeighbor);
 			}
 		}
 		foodsFound.keySet().removeAll(toRemove);
@@ -211,7 +212,9 @@ public class SlimeManager {
 		}
 		switch (currNeighbor.getType()) {
 			case MOULD_TYPE:
-				if ((Math.abs(edges.size() - edgesToRemove.size()) == 0)) {
+				if (allFoods.contains(nodePool.getNode(currNeighbor))) {
+					fauxEatFood(currNeighbor);
+				} else if ((Math.abs(edges.size() - edgesToRemove.size()) == 0)) {
 // TODO: What about the slime not able to pass through walls?
 					edgesToAdd.add((Mould) currNeighbor);
 				}
@@ -236,11 +239,27 @@ public class SlimeManager {
 	}
 
 	private void edgeEatFood(Food food) {
+		log("Eating food");
+
+		allFoods.add(nodePool.getNode(food));
 		AStar astar = new AStar(worldGrid, nodePool, nodePool.getNode(mouldHead),
-				nodePool.getNode(food), false);
+				nodePool.getNode(food), allFoods.size() == NUM_OF_FOODS);
 		foodsFound.put(food, astar.search());
 		// Set food as the new head
 		mouldHead = spawnTo(food);
+		edgesToRemove.addAll(edges);
+		edgesToAdd.clear();
+		edgesToAdd.add(mouldHead);
+	}
+
+	private void fauxEatFood(Element fauxFood) {
+		log("Faux eating food");
+
+		AStar astar = new AStar(worldGrid, nodePool, nodePool.getNode(mouldHead),
+				nodePool.getNode(fauxFood), allFoods.size() == NUM_OF_FOODS);
+		foodsFound.put(fauxFood, astar.search());
+		// Set food as the new head
+		mouldHead = spawnTo(fauxFood);
 		edgesToRemove.addAll(edges);
 		edgesToAdd.clear();
 		edgesToAdd.add(mouldHead);
@@ -269,6 +288,9 @@ public class SlimeManager {
 	private void spreadToMould(Mould mould) {
 		mould.timesPast++;
 		mould.saturate();
+		if (veins.contains(mould)) {
+			mould.makeBold();
+		}
 	}
 
 	/**
@@ -276,14 +298,14 @@ public class SlimeManager {
 	 */
 	public void eatFood(Food currFood) {
 		Mould.setFoundFood(true);
-		spreadToEmpty(currFood);
-		currFood.desaturate();
-		if (((Color) currFood.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {
-			Mould newMould = new Mould(currFood._xPos, currFood._yPos);
-			headsToAdd.put(newMould, null);
-			replace(newMould);
-			Mould.setFoundFood(false);
-		}
+//		spreadToEmpty(currFood);
+//		currFood.desaturate();
+//		if (((Color) currFood.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {
+//			Mould newMould = new Mould(currFood._xPos, currFood._yPos);
+//			headsToAdd.put(newMould, null);
+//			replace(newMould);
+//			Mould.setFoundFood(false);
+//		}
 	}
 
 	public void spreadToEmpty(Element currNeighbor) {
@@ -300,7 +322,7 @@ public class SlimeManager {
 		for (int x = 0; x < X_TILES; x++) {
 			for (int y = 0; y < Y_TILES; y++) {
 				Element currElem = worldGrid[x][y];
-				if (currElem.getType() == MOULD_TYPE && !vains.contains(currElem)) {
+				if (currElem.getType() == MOULD_TYPE && !veins.contains(currElem)) {
 					currElem.desaturate();
 					// If current elements reaches a minimal threshold opacity, it should disappear.
 					if (((Color) currElem.getElementRepr().getFill()).getOpacity() < DISAPPEAR_THRESH) {
@@ -343,12 +365,25 @@ public class SlimeManager {
 	 */
 	public void populateFood() {
 		Random rand = new Random();
-		for (int i = 0; i < NUM_OF_FOODS; i++) {
+		HashSet<Food> foodsPlaced = new HashSet<>();
+		boolean canPlace = true;
+		while (foodsPlaced.size() < NUM_OF_FOODS) {
+			canPlace = true;
+			//		for (int i = 0; i < NUM_OF_FOODS; i++) {
 			int randX = rand.nextInt(X_TILES);
 			int randY = rand.nextInt(Y_TILES);
 			Food toPlace = new Food(randX, randY);
-			replace(toPlace);
-			putOatmeal(toPlace);
+			for (Food placed : foodsPlaced) {
+				if (nodePool.getNode(placed).getManhattanTo(nodePool.getNode(toPlace)) < SPACING_FACTOR) {
+					canPlace = false;
+					break;
+				}
+			}
+			if (canPlace) {
+				foodsPlaced.add(toPlace);
+				replace(toPlace);
+				putOatmeal(toPlace);
+			}
 		}
 	}
 
